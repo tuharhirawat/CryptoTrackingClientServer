@@ -182,14 +182,15 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
       <Logo>Crypto Tracker</Logo>
       <NavLinks>
         <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/news">News</StyledLink>
-        <StyledLink to="/about">About</StyledLink>
         {/* <Link to="/profile" style={styles.profileIcon}>
               🧑
         </Link> */}
         {isLoggedIn && <StyledLink to="/airdrop">Airdrop</StyledLink>}
         {isLoggedIn && <StyledLink to="/pricing">Pricing</StyledLink>}
-        {isLoggedIn && <StyledLink to="/profile">🧑</StyledLink>} 
+        {isLoggedIn && <StyledLink to="/profile">Profile</StyledLink>} 
+        {isLoggedIn && <StyledLink to="/wishlist">WishList</StyledLink>} 
+        <StyledLink to="/news">News</StyledLink>
+        <StyledLink to="/about">About</StyledLink> 
       </NavLinks>
       <AuthButtons>
         {!isLoggedIn ? (

@@ -120,6 +120,7 @@ import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Profile from "./Pages/Profile";
+import JoinedAirdrops from "./Pages/JoinedAirdrops";
 // import styled from "styled-components";
 
 const App = () => {
@@ -147,6 +148,10 @@ const App = () => {
           <Route
             path="/pricing"
             element={<ProtectedRoute isLoggedIn={isLoggedIn} Component={Pricing} />}
+          />
+          <Route
+            path="/wishlist"
+            element={<ProtectedRoute isLoggedIn={isLoggedIn} Component={JoinedAirdrops} />}
           />
            <Route
           path="/profile"

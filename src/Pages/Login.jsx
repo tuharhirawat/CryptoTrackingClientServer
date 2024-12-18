@@ -396,7 +396,7 @@ const Login = ({ setIsLoggedIn }) => {
       if (user) {
         localStorage.setItem("userData", JSON.stringify(user));
         setIsLoggedIn(true);
-        navigate("/profile");
+        navigate("/");
       } else {
         setError("Invalid email or password.");
       }
