@@ -42,5 +42,19 @@
       "email": "ramesh@gmail.com",
       "password": "111111"
     }
+  ],
+  "contact": [
+    {
+      "id": "10",
+      "name": "Pranitha",
+      "email": "alice@example.com",
+      "message": "Hi"
+    },
+    {
+      "id": "beec",
+      "name": "Prabitha",
+      "email": "pranitha@gmail.com",
+      "message": "hello\n"
+    }
   ]
 }

@@ -23,32 +23,113 @@
 
 import React from "react";
 
+import styled from 'styled-components';
+import Pricing from "../Pages/Pricing";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
+import TermsOfService from "../Pages/TermsOfService";
+import Contact from "../Pages/Contact";
+
+const Main = styled.footer`
+background-color: #2c2c2c;
+    color: white;
+    padding: 40px 20px;
+    font-size: 14px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+    }
+`;
+
+const FooterContainer = styled.div`
+display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+`;
+
+const H3 = styled.h3`
+color: #fff;
+    font-size: 24px;
+    font-weight: bold; 
+`;
+
+const Ul = styled.ul`
+ list-style: none;
+    padding: 0;
+`;
+
+const Li = styled.li`
+margin: 10px 0;
+
+`;
+
+const A = styled.a`
+color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+
+    &:hover{
+    color: #007bff;}
+`;
+
+const FooterSocial = styled.div`
+display: flex;
+    flex-direction: column;
+    gap: 15px;
+`;
+
+const Icon = styled.a`
+ color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+
+    &:hover{
+    color: #007bff;}
+`;
+
+const FootBtm = styled.div`
+margin-top: 20px;
+    font-size: 18px;
+
+    p{
+    color: #bbb;
+    margin: 0;}
+`;
+
+
 
 function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-container">
+    <Main>
+      <FooterContainer>
         <div className="footer-logo">
-          <h3>Crypto Tracker</h3>
+          <H3>Crypto Tracker</H3>
         </div>
         <div className="footer-links">
-          <ul>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/terms-of-service">Terms of Service</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
+          <Ul>
+            {/* <Li><A href="/about">About Us</A></Li> */}
+            <Li><A href="/privacy-policy" Component={PrivacyPolicy}>Privacy Policy</A></Li>
+            <Li><A href="/terms-of-service" Component={TermsOfService}>Terms of Service</A></Li>
+            <Li><A href="/contact" Component={Contact}>Contact Us</A></Li>
+          </Ul>
         </div>
-        <div className="footer-social">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">Facebook</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">Twitter</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">LinkedIn</a>
-        </div>
-      </div>
-      <div className="footer-bottom">
+        <FooterSocial>
+          <Icon href="https://facebook.com" target="_blank" rel="noopener noreferrer" >Facebook</Icon>
+          <Icon href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</Icon>
+          <Icon href="https://linkedin.com" target="_blank" rel="noopener noreferrer" >LinkedIn</Icon>
+        </FooterSocial>
+      </FooterContainer>
+      <FootBtm>
         <p>&copy; 2024 Crypto Tracker. All Rights Reserved.</p>
-      </div>
-    </footer>
+      </FootBtm>
+    </Main>
   );
 }
 

@@ -368,6 +368,203 @@
 // };
 
 
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import styled from "styled-components";
+// import FormInput from "../Components/FormInput";
+
+// const Login = ({ setIsLoggedIn }) => {
+//   const [formData, setFormData] = useState({ email: "", password: "" });
+//   const navigate = useNavigate();
+//   const [error, setError] = useState("");
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await axios.get("http://localhost:3000/users");
+//       const user = response.data.find(
+//         (u) => u.email === formData.email && u.password === formData.password
+//       );
+
+//       if (user) {
+//         localStorage.setItem("userData", JSON.stringify(user));
+//         setIsLoggedIn(true);
+//         navigate("/");
+//       } else {
+//         setError("Invalid email or password.");
+//       }
+//     } catch (err) {
+//       console.error("Login error:", err);
+//       setError("Something went wrong. Please try again.");
+//     }
+//   };
+
+//   return (
+//     <FormContainer onSubmit={handleSubmit}>
+//       <h2>Login</h2>
+//       <FormInput
+//         type="email"
+//         placeholder="Email"
+//         name="email"
+//         value={formData.email}
+//         onChange={handleChange}
+//       />
+//       <FormInput
+//         type="password"
+//         placeholder="Password"
+//         name="password"
+//         value={formData.password}
+//         onChange={handleChange}
+//       />
+//       {error && <ErrorText>{error}</ErrorText>}
+//       <SubmitButton type="submit">Login</SubmitButton>
+//     </FormContainer>
+//   );
+// };
+
+// export default Login;
+
+// const FormContainer = styled.form`
+//   max-width: 400px;
+//   margin: 50px auto;
+//   padding: 20px;
+//   border: 1px solid #ccc;
+//   border-radius: 8px;
+//   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+// `;
+
+// const SubmitButton = styled.button`
+//   background-color: #007bff;
+//   color: white;
+//   border: none;
+//   padding: 10px;
+//   font-size: 1rem;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   width: 100%;
+
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
+
+// const ErrorText = styled.p`
+//   color: red;
+//   font-size: 0.9rem;
+//   margin-top: 10px;
+// `;
+
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import styled from "styled-components";
+// import FormInput from "../Components/FormInput";
+
+// const Login = ({ setIsLoggedIn }) => {
+//   const [formData, setFormData] = useState({ email: "", password: "" });
+//   const navigate = useNavigate();
+//   const [error, setError] = useState("");
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await axios.get("http://localhost:3000/users");
+//       const user = response.data.find(
+//         (u) => u.email === formData.email && u.password === formData.password
+//       );
+
+//       if (user) {
+//         localStorage.setItem("userData", JSON.stringify(user));
+//         setIsLoggedIn(true);
+//         navigate("/profile");
+//       } else {
+//         setError("Invalid email or password.");
+//       }
+//     } catch (err) {
+//       console.error("Login error:", err);
+//       setError("Something went wrong. Please try again.");
+//     }
+//   };
+
+//   return (
+//     <div >
+//     <FormContainer onSubmit={handleSubmit}>
+//       <h2>Login</h2>
+//       <FormInput
+//         type="email"
+//         placeholder="Email"
+//         name="email"
+//         value={formData.email}
+//         onChange={handleChange}
+//       />
+//       <FormInput
+//         type="password"
+//         placeholder="Password"
+//         name="password"
+//         value={formData.password}
+//         onChange={handleChange}
+//       />
+//       {error && <ErrorText>{error}</ErrorText>}
+//       <SubmitButton type="submit">Login</SubmitButton>
+//     </FormContainer>
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+// const Main = styled.div`
+
+// `
+
+// const FormContainer = styled.form`
+// display:flex;
+// align-items:center;
+// flex-direction:column;
+//   max-width: 400px;
+//   margin: 50px auto;
+//   margin-top:150px;
+//   margin-bottom: 100px;
+//   padding: 50px;
+//   border: 1px solid #ccc;
+//   border-radius: 8px;
+//   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+// `;
+
+// const SubmitButton = styled.button`
+//   background-color: #007bff;
+//   color: white;
+//   border: none;
+//   padding: 10px;
+//   font-size: 1rem;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   width: 100%;
+
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
+
+// const ErrorText = styled.p`
+//   color: red;
+//   font-size: 0.9rem;
+//   margin-top: 10px;
+// `;
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -376,16 +573,38 @@ import FormInput from "../Components/FormInput";
 
 const Login = ({ setIsLoggedIn }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({});
+  const [generalError, setGeneralError] = useState("");
   const navigate = useNavigate();
-  const [error, setError] = useState("");
+
+  const validateForm = () => {
+    let validationErrors = {};
+    if (!formData.email) {
+      validationErrors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      validationErrors.email = "Invalid email format.";
+    }
+    if (!formData.password) {
+      validationErrors.password = "Password is required.";
+    }
+    setErrors(validationErrors);
+    return Object.keys(validationErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
+    setGeneralError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     try {
       const response = await axios.get("http://localhost:3000/users");
@@ -398,45 +617,71 @@ const Login = ({ setIsLoggedIn }) => {
         setIsLoggedIn(true);
         navigate("/");
       } else {
-        setError("Invalid email or password.");
+        const emailExists = response.data.some((u) => u.email === formData.email);
+
+        if (emailExists) {
+          setGeneralError("Invalid password. Please try again.");
+        } else {
+          alert("User does not exist. Redirecting to Signup.");
+          navigate("/signup");
+        }
       }
     } catch (err) {
       console.error("Login error:", err);
-      setError("Something went wrong. Please try again.");
+      setGeneralError("Something went wrong. Please try again later.");
     }
   };
 
   return (
-    <FormContainer onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <FormInput
-        type="email"
-        placeholder="Email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-      />
-      <FormInput
-        type="password"
-        placeholder="Password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-      {error && <ErrorText>{error}</ErrorText>}
-      <SubmitButton type="submit">Login</SubmitButton>
-    </FormContainer>
+    <Main>
+      <FormContainer onSubmit={handleSubmit}>
+        <h2>Login</h2>
+
+        <FormInput
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        {errors.email && <ErrorText>{errors.email}</ErrorText>}
+
+        <FormInput
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        {errors.password && <ErrorText>{errors.password}</ErrorText>}
+
+        {generalError && <ErrorText>{generalError}</ErrorText>}
+
+        <SubmitButton type="submit">Login</SubmitButton>
+      </FormContainer>
+    </Main>
   );
 };
 
 export default Login;
 
+const Main = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+`;
+
 const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 `;
 
@@ -449,6 +694,7 @@ const SubmitButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
+  margin-top: 10px;
 
   &:hover {
     background-color: #0056b3;
@@ -458,6 +704,5 @@ const SubmitButton = styled.button`
 const ErrorText = styled.p`
   color: red;
   font-size: 0.9rem;
-  margin-top: 10px;
+  margin-top: 5px;
 `;
-
