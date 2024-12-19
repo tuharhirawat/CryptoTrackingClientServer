@@ -100,7 +100,6 @@ const Contact = () => {
 
 export default Contact;
 
-// Background Component to set the background image
 const Background = styled.div`
   background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
   background-size: cover;
@@ -112,7 +111,6 @@ const Background = styled.div`
   align-items: center;
 `;
 
-// Contact form container with original size and appearance
 const ContactContainer = styled.div`
   width: 600px;  /* fixed width */
   padding: 20px;
@@ -121,6 +119,12 @@ const ContactContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+   &:hover {
+    border: 4px solid;
+    border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
+    border-image-slice: 1;
+  }
 `;
 
 const Form = styled.form`
@@ -133,6 +137,12 @@ const Input = styled.input`
   margin: 10px 0;
   border-radius: 4px;
   border: 1px solid #ccc;
+
+  &:hover {
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
+    border-image-slice: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 `;
 
 const TextArea = styled.textarea`
@@ -141,6 +151,12 @@ const TextArea = styled.textarea`
   border-radius: 4px;
   border: 1px solid #ccc;
   height: 150px;
+
+  &:hover {
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
+    border-image-slice: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 `;
 
 const SubmitButton = styled.button`

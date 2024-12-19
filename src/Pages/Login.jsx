@@ -63,7 +63,6 @@ const Login = ({ setIsLoggedIn }) => {
 
 export default Login;
 
-// Animations
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -86,7 +85,6 @@ const slideIn = keyframes`
   }
 `;
 
-// Styled Components
 const PageContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -110,6 +108,13 @@ const FormContainer = styled.form`
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   animation: ${slideIn} 0.7s ease-out;
+
+   &:hover {
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
+    border-image-slice: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
 `;
 
 const SubmitButton = styled.button`

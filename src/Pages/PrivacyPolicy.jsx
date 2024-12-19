@@ -16,20 +16,20 @@ const PriPol = styled.div`
   max-width: 900px;
   margin: 30px auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  background-color: rgba(42, 42, 46, 0.5); /* Semi-transparent white */
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: "Arial", sans-serif;
 
   h1 {
     text-align: center;
-    color: #333;
+    color: white;
     font-size: 2.5rem;
     margin-bottom: 20px;
   }
 
   h2 {
-    color: #000;
+    color: white;
     font-size: 1.8rem;
     margin-top: 30px;
     margin-bottom: 15px;
@@ -40,7 +40,7 @@ const PriPol = styled.div`
   p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555;
+    color: white;
     margin-bottom: 15px;
     text-align: justify;
   }

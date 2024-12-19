@@ -249,81 +249,94 @@ const Profile = ({ setIsLoggedIn }) => {
   }
 
   return (
-    <ProfileContainer>
-      <h2>Welcome, {user.name}!</h2>
+    <Background>
+      <ProfileContainer>
+        <h2>Welcome, {user.name}!</h2>
 
-      {editing ? (
-        <div>
-          <FormInput
-            type="text"
-            name="name"
-            value={updatedUser.name}
-            placeholder="Name"
-            onChange={handleInputChange}
-          />
-          <FormInput
-            type="text"
-            name="mobile"
-            value={updatedUser.mobile}
-            placeholder="Mobile Number"
-            onChange={handleInputChange}
-          />
-          <FormInput
-            type="email"
-            name="email"
-            value={updatedUser.email}
-            placeholder="Email"
-            onChange={handleInputChange}
-          />
-          <ActionButton onClick={handleUpdateProfile}>Save</ActionButton>
-          <CancelButton onClick={handleEditToggle}>Cancel</CancelButton>
-        </div>
-      ) : changePassword ? (
-        <div>
-          <FormInput
-            type="password"
-            name="currentPassword"
-            placeholder="Current Password"
-            value={passwordData.currentPassword}
-            onChange={handlePasswordChange}
-          />
-          <FormInput
-            type="password"
-            name="newPassword"
-            placeholder="New Password"
-            value={passwordData.newPassword}
-            onChange={handlePasswordChange}
-          />
-          <ActionButton onClick={handleUpdatePassword}>Update Password</ActionButton>
-          <CancelButton onClick={() => setChangePassword(false)}>Cancel</CancelButton>
-        </div>
-      ) : (
-        <ProfileDetails>
-          <p>
-            <strong>Name:</strong> {user.name}
-          </p>
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
-          <p>
-            <strong>Mobile:</strong> {user.mobile}
-          </p>
-          <EditButton onClick={handleEditToggle}>Edit Profile</EditButton>
-          <EditButton onClick={() => setChangePassword(true)}>Change Password</EditButton>
-          <DeleteButton onClick={handleDeleteProfile}>Delete Profile</DeleteButton>
-          <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
-        </ProfileDetails>
-      )}
-    </ProfileContainer>
+        {editing ? (
+          <div>
+            <FormInput
+              type="text"
+              name="name"
+              value={updatedUser.name}
+              placeholder="Name"
+              onChange={handleInputChange}
+            />
+            <FormInput
+              type="text"
+              name="mobile"
+              value={updatedUser.mobile}
+              placeholder="Mobile Number"
+              onChange={handleInputChange}
+            />
+            <FormInput
+              type="email"
+              name="email"
+              value={updatedUser.email}
+              placeholder="Email"
+              onChange={handleInputChange}
+            />
+            <ActionButton onClick={handleUpdateProfile}>Save</ActionButton>
+            <CancelButton onClick={handleEditToggle}>Cancel</CancelButton>
+          </div>
+        ) : changePassword ? (
+          <div>
+            <FormInput
+              type="password"
+              name="currentPassword"
+              placeholder="Current Password"
+              value={passwordData.currentPassword}
+              onChange={handlePasswordChange}
+            />
+            <FormInput
+              type="password"
+              name="newPassword"
+              placeholder="New Password"
+              value={passwordData.newPassword}
+              onChange={handlePasswordChange}
+            />
+            <ActionButton onClick={handleUpdatePassword}>Update Password</ActionButton>
+            <CancelButton onClick={() => setChangePassword(false)}>Cancel</CancelButton>
+          </div>
+        ) : (
+          <ProfileDetails>
+            <p>
+              <strong>Name:</strong> {user.name}
+            </p>
+            <p>
+              <strong>Email:</strong> {user.email}
+            </p>
+            <p>
+              <strong>Mobile:</strong> {user.mobile}
+            </p>
+            <EditButton onClick={handleEditToggle}>Edit Profile</EditButton>
+            <EditButton onClick={() => setChangePassword(true)}>Change Password</EditButton>
+            <DeleteButton onClick={handleDeleteProfile}>Delete Profile</DeleteButton>
+            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+          </ProfileDetails>
+        )}
+      </ProfileContainer>
+    </Background>
   );
 };
 
 export default Profile;
 
+const Background = styled.div`
+  background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const ProfileContainer = styled.div`
-  max-width: 600px;
-  margin: 50px auto;
+  width: 600px;
   padding: 20px;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -355,8 +368,8 @@ const ActionButton = styled.button`
 
   &:hover {
     transition-duration: 1s;
-  color:black;
-  background-color: gold;
+    color: black;
+    background-color: gold;
   }
 `;
 
@@ -364,6 +377,8 @@ const DeleteButton = styled(ActionButton)`
   background-color: #ff4d4d;
 
   &:hover {
+    color:white;
+    transition-duration:1s;
     background-color: #cc0000;
   }
 `;
@@ -373,8 +388,8 @@ const CancelButton = styled(ActionButton)`
 
   &:hover {
     transition-duration: 1s;
-  color:black;
-  background-color: gold;
+    color: black;
+    background-color: gold;
   }
 `;
 
@@ -383,6 +398,8 @@ const LogoutButton = styled(ActionButton)`
   background-color: #555;
 
   &:hover {
+  transition-duration: 1s;
+    color:white;
     background-color: #333;
   }
 `;
@@ -392,7 +409,7 @@ const EditButton = styled(ActionButton)`
 
   &:hover {
     transition-duration: 1s;
-  color:black;
-  background-color: gold;
+    color: black;
+    background-color: gold;
   }
 `;

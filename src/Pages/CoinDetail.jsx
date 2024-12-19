@@ -4,7 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 const CoinDetails = () => {
-  const { coinId } = useParams(); // Access the coinId from the URL params
+  const { coinId } = useParams(); 
   const [coinData, setCoinData] = useState(null);
 
   useEffect(() => {

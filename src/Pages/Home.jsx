@@ -1,76 +1,8 @@
-// import React from 'react';
-// import styled from 'styled-components';
-
-// const Home = () => {
-//   return (
-//     <HomeContainer>
-//       <Overlay>
-//         <Content>
-//           <Title>Welcome to Crypto Tracker</Title>
-//           <Paragraph>
-//             Stay updated with the latest cryptocurrency trends, prices, and insights. Whether you're a seasoned investor 
-//             or just starting your journey, Crypto Tracker is here to provide you with real-time data, tools, and resources 
-//             to navigate the world of cryptocurrency with confidence.
-//           </Paragraph>
-//           <Paragraph>
-//             Start exploring the crypto market today and take control of your investments with Crypto Tracker.
-//           </Paragraph>
-//         </Content>
-//       </Overlay>
-//     </HomeContainer>
-//   );
-// };
-
-// export default Home;
-
-// // Styled Components
-// const HomeContainer = styled.div`
-//   height: 100vh;
-//   width: 100%;
-//   margin: 0;
-//   padding: 0;
-//   background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-// const Overlay = styled.div`
-//   background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for better contrast */
-//   border-radius: 10px;
-//   padding: 20px;
-//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-//   max-width: 800px;
-//   width: 90%;
-//   text-align: center;
-// `;
-
-// const Content = styled.div`
-//   color: #fff; /* White text for better contrast on dark overlay */
-// `;
-
-// const Title = styled.h1`
-//   font-size: 2.5rem;
-//   color: #ffcc00;
-//   margin-bottom: 20px;
-// `;
-
-// const Paragraph = styled.p`
-//   font-size: 1.2rem;
-//   line-height: 1.8;
-//   margin-bottom: 20px;
-// `;
-
-
-
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components"; // Import createGlobalStyle here
+import styled, { createGlobalStyle } from "styled-components"; 
 import axios from "axios";
+
 
 const Home = () => {
   const [coins, setCoins] = useState([]);
@@ -107,13 +39,6 @@ const Home = () => {
     <HomeContainer>
       <HeaderContent>
         <Title>Welcome to Crypto Tracker</Title>
-        {/* <Paragraph>
-          Stay updated with the latest cryptocurrency trends, prices, and
-          insights. Whether you're a seasoned investor or just starting your
-          journey, Crypto Tracker is here to provide you with real-time data,
-          tools, and resources to navigate the world of cryptocurrency with
-          confidence.
-        </Paragraph> */}
       </HeaderContent>
 
       {/* Coins Section */}
@@ -134,6 +59,35 @@ const Home = () => {
         </CoinsWrapper>
       </CoinsContainer>
 
+     
+           {/* Updated Feature Cards Section */}
+      <FeaturesSection>
+        <FeatureCard>
+          <Icon>
+            <i className="fas fa-chart-line"></i>
+          </Icon>
+          <CardTitle>Explore Cryptocurrency Markets</CardTitle>
+          <CardText>Stay ahead of market trends with real-time data, and make informed decisions by analyzing the global cryptocurrency landscape.</CardText>
+        </FeatureCard>
+
+        <FeatureCard>
+          <Icon>
+            <i className="fas fa-wallet"></i>
+          </Icon>
+          <CardTitle>Manage Your Crypto Portfolio</CardTitle>
+          <CardText>Track and optimize your cryptocurrency investments with ease. From Bitcoin to Altcoins, manage all your assets in one place.</CardText>
+        </FeatureCard>
+
+        <FeatureCard>
+          <Icon>
+            <i className="fas fa-graduation-cap"></i>
+          </Icon>
+          <CardTitle>Learn Crypto Basics</CardTitle>
+          <CardText>Get started with the fundamentals of blockchain technology, cryptocurrency investments, and how to stay safe in the digital economy.</CardText>
+        </FeatureCard>
+      </FeaturesSection>
+
+      <Footer />
       <GlobalStyle /> {/* Include the global styles here */}
     </HomeContainer>
   );
@@ -143,7 +97,7 @@ export default Home;
 
 // Styled Components
 const HomeContainer = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -152,39 +106,35 @@ const HomeContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: center;
   overflow: hidden;
+  min-height: 100vh; /* Ensure it takes at least the full height of the viewport */
 `;
 
 const HeaderContent = styled.div`
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   color: white;
   text-align: center;
+  padding-top: 80px; /* This adds space between the top and the title */
   z-index: 10;
-  padding: 0 20px;
 `;
 
 const Title = styled.h1`
+  margin-top: 100px;
+  margin-bottom: 163px;
   font-size: 3rem;
   color: #ffcc00;
-  margin-bottom: 20px;
-`;
-
-const Paragraph = styled.p`
-  font-size: 1.5rem;
-  line-height: 1.8;
-  margin-bottom: 20px;
 `;
 
 const CoinsContainer = styled.div`
   width: 100%;
-  margin-top: 150px;
+  margin-top: 50px; /* Adjust space between title and coins */
   padding-bottom: 50px;
+  
 `;
 
 const CoinsWrapper = styled.div`
@@ -192,6 +142,8 @@ const CoinsWrapper = styled.div`
   flex-wrap: nowrap;
   animation: scroll 30s linear infinite;
   justify-content: flex-start;
+
+  
 `;
 
 const CoinImageWrapper = styled.div`
@@ -206,9 +158,6 @@ const CoinImageWrapper = styled.div`
   cursor: pointer;
   transition: transform 0.3s ease;
   
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 const CoinImage = styled.img`
@@ -216,6 +165,11 @@ const CoinImage = styled.img`
   height: 80px;
   object-fit: contain;
   border-radius: 10px;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.8);
+  }
 `;
 
 const CoinInfo = styled.div`
@@ -234,7 +188,6 @@ const CoinPrice = styled.p`
   color: #ffcc00;
 `;
 
-// Keyframes for continuous scrolling animation
 const GlobalStyle = createGlobalStyle`
   @keyframes scroll {
     0% {
@@ -246,6 +199,57 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const FeaturesSection = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px; /* Add margin to ensure proper space between coins and cards */
+  flex-wrap: wrap;
+  gap: 100px;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 100px; /* Add space before footer */
+`;
 
+const FeatureCard = styled.div`
 
+  background-color: gold;
+  opacity:0.8;
+  color: black;
+  border-radius: 10px;
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.8);
+  }
+`;
 
+const Icon = styled.div`
+  font-size: 3rem;
+  color: #ffcc00;
+  margin-bottom: 15px;
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+`;
+
+const CardText = styled.p`
+  font-size: 1rem;
+  line-height: 1.5;
+`;
+
+const Footer = styled.footer`
+  width: 100%;
+  padding: 0px 0;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  position: relative;
+  bottom: 0;
+  z-index: 5;
+`;

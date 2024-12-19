@@ -205,6 +205,13 @@ const FormContainer = styled.form`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.9);
   animation: ${slideIn} 0.7s ease-out;
+
+  &:hover {
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
+    border-image-slice: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
 `;
 
 const SubmitButton = styled.button`
