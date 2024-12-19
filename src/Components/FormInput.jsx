@@ -26,6 +26,14 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #333;
+  }
+
+  &:hover {
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
+    border-image-slice: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); 
   }
 `;
+

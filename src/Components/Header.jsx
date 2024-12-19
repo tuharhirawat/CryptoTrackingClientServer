@@ -15,9 +15,6 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
       <Logo>Crypto Tracker</Logo>
       <NavLinks>
         <StyledLink to="/">Home</StyledLink>
-        {/* <Link to="/profile" style={styles.profileIcon}>
-              🧑
-        </Link> */}
         {isLoggedIn && <StyledLink to="/airdrop">Airdrop</StyledLink>}
         {isLoggedIn && <StyledLink to="/pricing">Pricing</StyledLink>}
         {isLoggedIn && <StyledLink to="/profile">Profile</StyledLink>} 
@@ -98,83 +95,3 @@ const LogoutButton = styled.button`
     background-color: #ff1a1a;
   }
 `;
-
-
-
-// import React from "react";
-// import { Link, useNavigate } from "react-router-dom";
-
-// const Header = ({ isLoggedIn, setIsLoggedIn }) => {
-//   const navigate = useNavigate();
-
-//   const handleLogout = () => {
-//     localStorage.removeItem("userData");
-//     setIsLoggedIn(false);
-//     navigate("/"); // Redirect to the homepage after logout
-//   };
-
-//   return (
-//     <header style={styles.header}>
-//       <h1 style={styles.title}>Crypto Website</h1>
-//       <nav>
-//         {isLoggedIn && (
-//           <>
-            // <Link to="/profile" style={styles.profileIcon}>
-            //   🧑
-            // </Link>
-//             <button onClick={handleLogout} style={styles.logoutButton}>
-//               Logout
-//             </button>
-//           </>
-//         )}
-//         {!isLoggedIn && (
-//           <Link to="/login" style={styles.loginButton}>
-//             Login
-//           </Link>
-//         )}
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// /* Inline Styles */
-// const styles = {
-//   header: {
-//     display: "flex",
-//     justifyContent: "space-between",
-//     alignItems: "center",
-//     backgroundColor: "#333",
-//     color: "#fff",
-//     padding: "10px 20px",
-//     position: "fixed",
-//     top: 0,
-//     width: "100%",
-//     zIndex: 1000,
-//   },
-//   title: {
-//     margin: 0,
-//   },
-//   profileIcon: {
-//     fontSize: "1.5rem",
-//     marginRight: "20px",
-//     color: "#fff",
-//     textDecoration: "none",
-//   },
-//   logoutButton: {
-//     padding: "8px 16px",
-//     backgroundColor: "red",
-//     color: "#fff",
-//     border: "none",
-//     borderRadius: "5px",
-//     cursor: "pointer",
-//   },
-//   loginButton: {
-//     padding: "8px 16px",
-//     backgroundColor: "green",
-//     color: "#fff",
-//     textDecoration: "none",
-//     borderRadius: "5px",
-//   },
-// };

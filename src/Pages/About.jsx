@@ -134,7 +134,6 @@ const About = () => {
 
 export default About;
 
-// Styled Components
 const PageWrapper = styled.div`
   background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
   background-size: cover;
@@ -151,7 +150,7 @@ const AboutContainer = styled.div`
   padding: 20px;
   max-width: 800px;
   text-align: center;
-  background-color: rgba(42, 42, 46, 0.5); /* Slightly transparent white to let the background show through */
+  background-color: rgba(42, 42, 46, 0.5); 
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 `;
