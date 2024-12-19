@@ -269,7 +269,6 @@
 // export default App;
 
 
-
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Components/Header";
@@ -285,7 +284,7 @@ import Login from "./Pages/Login";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Profile from "./Pages/Profile";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
-import CoinDetail from "./Pages/CoinDetail";
+import CoinDetails from "./Pages/CoinDetail"; // Updated Component Import
 import styled from "styled-components";
 import TermsOfService from "./Pages/TermsOfService";
 import Contact from "./Pages/Contact";
@@ -352,7 +351,7 @@ const App = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/coin/:coinId" element={<CoinDetail />} />
+          <Route path="/coin/:coinId" element={<CoinDetails />} /> {/* Added Route */}
           {/* Default Route */}
           <Route
             path="*"
@@ -366,3 +365,4 @@ const App = () => {
 };
 
 export default App;
+

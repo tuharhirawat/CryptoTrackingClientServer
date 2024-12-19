@@ -858,194 +858,171 @@
 // export default Airdrop;
 
 
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import styled from "styled-components";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+// Register chart components
+ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-// Styled Components
-const PageContainer = styled.div`
-  background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-`;
+const CoinDetails = () => {
+  const { coinId } = useParams();
+  const [coinData, setCoinData] = useState(null);
+  const [chartData, setChartData] = useState({});
+  const [timeRange, setTimeRange] = useState("30");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-const AirdropContainer = styled.div`
-  padding: 20px;
-  max-width: 800px;
-  text-align: center;
-`;
+  // Fetch Coin Data and Price History
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
 
-const Title = styled.h2`
-  font-size: 40px;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #333;
-`;
+    try {
+      const [details, history] = await Promise.all([
+        axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}`),
+        axios.get(
+          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`,
+          { params: { vs_currency: "usd", days: timeRange } }
+        ),
+      ]);
 
-const SearchContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 30px;
-`;
-
-const SearchBar = styled.input`
-  width: 300px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-`;
-
-const Button = styled.button`
-  padding: 15px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
-
-const AirdropList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-`;
-
-const AirdropItem = styled.div`
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-`;
-
-const AirdropName = styled.h3`
-  margin: 0 0 10px;
-  color: #111;
-`;
-
-const AirdropDetails = styled.p`
-  margin: 5px 0;
-  color: #555;
-`;
-
-const ClaimLink = styled.a`
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-    color: #0056b3;
-  }
-`;
-
-const Airdrop = ({ wishlist, setWishlist }) => {
-  const [airdrops, setAirdrops] = useState([]);
-  const [filteredAirdrops, setFilteredAirdrops] = useState([]);
-  const [search, setSearch] = useState('');
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    fetchAirdrops();
-  }, []);
-
-  const fetchAirdrops = async () => {
-    const mockData = [
-      { id: 1, name: "Uniswap V3 Rewards", reward: "400 UNI Tokens", deadline: "2024-12-31", link: "https://uniswap.org" },
-      { id: 2, name: "Aave Loyalty Program", reward: "50 AAVE Tokens", deadline: "2024-12-25", link: "https://aave.com" },
-      { id: 3, name: "Curve Governance Incentives", reward: "30 CRV Tokens", deadline: "2025-01-10", link: "https://curve.fi" },
-      { id: 4, name: "SushiSwap Community Giveaway", reward: "200 SUSHI Tokens", deadline: "2024-12-20", link: "https://sushi.com" },
-      { id: 5, name: "PancakeSwap Early Access", reward: "100 CAKE Tokens", deadline: "2025-01-15", link: "https://pancakeswap.finance" },
-      { id: 6, name: "Optimism Layer 2 Rollout", reward: "300 OP Tokens", deadline: "2024-12-28", link: "https://optimism.io" },
-      { id: 7, name: "Arbitrum Ecosystem Boost", reward: "150 ARB Tokens", deadline: "2024-12-30", link: "https://arbitrum.io" },
-      { id: 8, name: "Solana NFT Marketplace Airdrop", reward: "10 SOL Tokens", deadline: "2025-01-20", link: "https://solana.com" },
-      { id: 9, name: "Polygon zkEVM Incentives", reward: "200 MATIC Tokens", deadline: "2025-01-05", link: "https://polygon.technology" },
-      { id: 10, name: "Avalanche DeFi Grant", reward: "300 AVAX Tokens", deadline: "2025-02-01", link: "https://avax.network" },
-      { id: 11, name: "Stellar Network Rewards", reward: "100 XLM Tokens", deadline: "2025-01-10", link: "https://stellar.org" },
-      { id: 12, name: "Ripple Developer Program", reward: "250 XRP Tokens", deadline: "2025-01-15", link: "https://ripple.com" },
-      { id: 13, name: "Terra Community Growth Airdrop", reward: "150 LUNA Tokens", deadline: "2024-12-31", link: "https://terra.money" },
-      { id: 14, name: "Chainlink Oracle Rewards", reward: "75 LINK Tokens", deadline: "2025-01-25", link: "https://chain.link" },
-      { id: 15, name: "Cosmos Hub Support Incentives", reward: "120 ATOM Tokens", deadline: "2025-02-10", link: "https://cosmos.network" },
-      { id: 16, name: "NEAR Protocol Expansion", reward: "180 NEAR Tokens", deadline: "2025-01-22", link: "https://near.org" },
-      { id: 17, name: "Algorand Ecosystem Growth", reward: "200 ALGO Tokens", deadline: "2025-02-15", link: "https://algorand.com" },
-      { id: 18, name: "Filecoin Storage Airdrop", reward: "5 FIL Tokens", deadline: "2025-03-01", link: "https://filecoin.io" },
-      { id: 19, name: "Tezos Delegator Rewards", reward: "50 XTZ Tokens", deadline: "2025-02-28", link: "https://tezos.com" },       { id: 20, name: "EOS Token Airdrop Campaign", reward: "100 EOS Tokens", deadline: "2025-03-15", link: "https://eos.io" },
-    ];
-    setAirdrops(mockData);
-    setFilteredAirdrops(mockData);
-  };
-
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
-    const filtered = airdrops.filter((airdrop) =>
-      airdrop.name.toLowerCase().includes(event.target.value.toLowerCase())
-    );
-    setFilteredAirdrops(filtered);
-  };
-
-  const addToWishlist = (airdrop) => {
-    if (!wishlist.some((item) => item.id === airdrop.id)) {
-      setWishlist([...wishlist, airdrop]);
-      navigate('/wishlist');
+      setCoinData(details.data);
+      setChartData(formatChartData(history.data));
+    } catch (err) {
+      setError("Failed to fetch data. Please try again later.");
+      console.error("Error fetching data:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, [coinId, timeRange]);
+
+  const formatChartData = (data) => ({
+    labels: data.prices.map((price) => new Date(price[0]).toLocaleDateString()),
+    datasets: [
+      {
+        label: `Price (Last ${timeRange} Days)`,
+        data: data.prices.map((price) => price[1]),
+        borderColor: "rgba(255, 206, 86, 1)",
+        backgroundColor: "rgba(255, 206, 86, 0.2)",
+        borderWidth: 2,
+        pointRadius: 0,
+      },
+    ],
+  });
+
+  const handleTimeRangeChange = (range) => {
+    if (timeRange !== range) {
+      setTimeRange(range);
+    }
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!coinData) return <div>No data available</div>;
+
   return (
-    <PageContainer>
-      <AirdropContainer>
-        <Title>Crypto Airdrops</Title>
-
-        <SearchContainer>
-          <SearchBar
-            type="text"
-            placeholder="Search airdrops..."
-            value={search}
-            onChange={handleSearch}
-          />
-          <Button onClick={() => navigate('/wishlist')}>Go to Wishlist</Button>
-        </SearchContainer>
-
-        <AirdropList>
-          {filteredAirdrops.length > 0 ? (
-            filteredAirdrops.map((airdrop) => (
-              <AirdropItem key={airdrop.id}>
-                <AirdropName>{airdrop.name}</AirdropName>
-                <AirdropDetails>Reward: {airdrop.reward}</AirdropDetails>
-                <AirdropDetails>Deadline: {new Date(airdrop.deadline).toLocaleDateString()}</AirdropDetails>
-                <ClaimLink href={airdrop.link} target="_blank" rel="noopener noreferrer">
-                  Claim Now
-                </ClaimLink>
-                <Button onClick={() => addToWishlist(airdrop)}>Add to Wishlist</Button>
-              </AirdropItem>
-            ))
-          ) : (
-            <p>No airdrops found.</p>
-          )}
-        </AirdropList>
-      </AirdropContainer>
-    </PageContainer>
+    <CoinDetailsContainer>
+      <CoinImage src={coinData.image.large} alt={coinData.name} />
+      <CoinName>{coinData.name}</CoinName>
+      <CoinSymbol>{coinData.symbol.toUpperCase()}</CoinSymbol>
+      <CoinPrice>
+        Price: ${coinData.market_data.current_price.usd.toFixed(2)}
+      </CoinPrice>
+      <TimeRangeSelector>
+        <button onClick={() => handleTimeRangeChange("1")}>24 Hours</button>
+        <button onClick={() => handleTimeRangeChange("30")}>30 Days</button>
+        <button onClick={() => handleTimeRangeChange("180")}>6 Months</button>
+      </TimeRangeSelector>
+      <LineGraph>
+        <Line data={chartData} />
+      </LineGraph>
+      <CoinDescription>
+        <strong>Description: </strong>
+        {coinData.description.en || "No description available"}
+      </CoinDescription>
+    </CoinDetailsContainer>
   );
 };
 
-export default Airdrop;
+export default CoinDetails;
+
+// Styled Components
+const CoinDetailsContainer = styled.div`
+  text-align: center;
+  padding: 50px;
+`;
+
+const CoinImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+`;
+
+const CoinName = styled.h1`
+  font-size: 2.5rem;
+  margin-top: 20px;
+`;
+
+const CoinSymbol = styled.p`
+  font-size: 1.5rem;
+  color: #6a11cb;
+  margin-top: 10px;
+`;
+
+const CoinPrice = styled.p`
+  font-size: 1.2rem;
+  color: #ffcc00;
+  margin-top: 20px;
+`;
+
+const TimeRangeSelector = styled.div`
+  margin: 20px 0;
+  button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #6a11cb;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #ffcc00;
+      color: black;
+    }
+  }
+`;
+
+const LineGraph = styled.div`
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+`;
+
+const CoinDescription = styled.p`
+  font-size: 1rem;
+  margin-top: 20px;
+  color: #333;
+  text-align: justify;
+`;
+
 
