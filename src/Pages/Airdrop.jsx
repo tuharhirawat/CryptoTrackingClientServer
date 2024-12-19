@@ -1121,6 +1121,7 @@ const PageContainer = styled.div`
   background-size: auto;
   background-position: center;
   background-repeat: no-repeat;
+  height : 70vh;
 `;
 
 const SearchSection = styled.div`
