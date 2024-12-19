@@ -189,7 +189,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
         </Link> */}
         {isLoggedIn && <StyledLink to="/airdrop">Airdrop</StyledLink>}
         {isLoggedIn && <StyledLink to="/pricing">Pricing</StyledLink>}
-        {isLoggedIn && <StyledLink to="/profile">🧑</StyledLink>} 
+        {isLoggedIn && <StyledLink to="/profile">Profile</StyledLink>} 
       </NavLinks>
       <AuthButtons>
         {!isLoggedIn ? (

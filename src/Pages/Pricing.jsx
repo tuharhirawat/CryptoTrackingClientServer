@@ -261,6 +261,10 @@ const PageContainer = styled.div`
   min-height: 100vh;
   text-align: center;
   background-color: #f9f9f9;
+  background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const SearchSection = styled.div`

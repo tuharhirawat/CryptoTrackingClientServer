@@ -585,7 +585,12 @@ const PageContainer = styled.div`
   align-items: center;
   font-family: Arial, sans-serif;
   padding: 0 20px;
+  background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
+
 
 const SearchSection = styled.div`
   display: flex;
