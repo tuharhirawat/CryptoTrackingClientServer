@@ -1,3 +1,167 @@
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import FormInput from "../Components/FormInput";
+// import styled, { keyframes } from "styled-components";
+
+// const Signup = () => {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     mobile: "",
+//     email: "",
+//     password: "",
+//     confirmPassword: "",
+//   });
+
+//   const [errors, setErrors] = useState({});
+//   const [formStatus, setFormStatus] = useState("");
+//   const navigate = useNavigate();
+
+//   const validateForm = () => {
+//     let validationErrors = {};
+
+//     if (!formData.name) {
+//       validationErrors.name = "Name is required";
+//     }
+
+//     if (!formData.mobile) {
+//       validationErrors.mobile = "Mobile number is required";
+//     } else if (!/^\d+$/.test(formData.mobile)) {
+//       validationErrors.mobile = "Mobile number should contain only digits";
+//     }
+
+//     if (!formData.email) {
+//       validationErrors.email = "Email is required";
+//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+//       validationErrors.email = "Email is not valid";
+//     }
+
+//     if (!formData.password) {
+//       validationErrors.password = "Password is required";
+//     } else if (formData.password.length < 6) {
+//       validationErrors.password = "Password must be at least 6 characters";
+//     }
+
+//     if (!formData.confirmPassword) {
+//       validationErrors.confirmPassword = "Confirm Password is required";
+//     } else if (formData.confirmPassword !== formData.password) {
+//       validationErrors.confirmPassword = "Passwords do not match";
+//     }
+
+//     setErrors(validationErrors);
+//     return Object.keys(validationErrors).length === 0;
+//   };
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//     setErrors({ ...errors, [name]: "" }); 
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     if (!validateForm()) return;
+
+//     setFormStatus("loading");
+
+//     try {
+//       const emailCheck = await axios.get(`http://localhost:3000/users?email=${formData.email}`);
+//       const usernameCheck = await axios.get(`http://localhost:3000/users?name=${formData.name}`);
+
+//       if (emailCheck.data.length > 0) {
+//         setErrors({ ...errors, email: "Email already exists" });
+//         setFormStatus("");
+//         return;
+//       }
+
+//       if (usernameCheck.data.length > 0) {
+//         setErrors({ ...errors, name: "Username already exists" });
+//         setFormStatus("");
+//         return;
+//       }
+
+//       await axios.post("http://localhost:3000/users", {
+//         name: formData.name,
+//         mobile: formData.mobile,
+//         email: formData.email,
+//         password: formData.password,
+//       });
+
+//       setFormStatus("success");
+//       alert("Signup successful!");
+//       navigate("/login");
+//     } catch (err) {
+//       console.error("Signup error:", err);
+//       setFormStatus("error");
+//       setErrors({ general: "Something went wrong! Please try again later." });
+//     }
+//   };
+
+//   return (
+//     <PageContainer>
+//       <FormContainer onSubmit={handleSubmit}>
+//         <h2>Sign Up</h2>
+
+//         {formStatus === "error" && <ErrorMessage>{errors.general}</ErrorMessage>}
+
+//         <FormInput
+//           type="text"
+//           placeholder="Name"
+//           name="name"
+//           onChange={handleChange}
+//           value={formData.name}
+//         />
+//         {errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+
+//         <FormInput
+//           type="text"
+//           placeholder="Mobile Number"
+//           name="mobile"
+//           onChange={handleChange}
+//           value={formData.mobile}
+//         />
+//         {errors.mobile && <ErrorMessage>{errors.mobile}</ErrorMessage>}
+
+//         <FormInput
+//           type="email"
+//           placeholder="Email"
+//           name="email"
+//           onChange={handleChange}
+//           value={formData.email}
+//         />
+//         {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+
+//         <FormInput
+//           type="password"
+//           placeholder="Password"
+//           name="password"
+//           onChange={handleChange}
+//           value={formData.password}
+//         />
+//         {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+
+//         <FormInput
+//           type="password"
+//           placeholder="Confirm Password"
+//           name="confirmPassword"
+//           onChange={handleChange}
+//           value={formData.confirmPassword}
+//         />
+//         {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword}</ErrorMessage>}
+
+//         <SubmitButton type="submit" disabled={formStatus === "loading"}>
+//           {formStatus === "loading" ? "Signing Up..." : "Sign Up"}
+//         </SubmitButton>
+//       </FormContainer>
+//     </PageContainer>
+//   );
+// };
+
+// export default Signup;
+
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -17,66 +181,101 @@ const Signup = () => {
   const [formStatus, setFormStatus] = useState("");
   const navigate = useNavigate();
 
+  const validateInput = async (name, value) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/users`);
+      const existingUser = response.data.find((user) => user[name] === value);
+
+      if (existingUser) {
+        return `${name === "name" ? "Username" : name === "email" ? "Email" : "Mobile number"} already exists.`;
+      }
+      return "";
+    } catch (err) {
+      console.error("Validation error:", err);
+      return "Unable to validate. Please try again.";
+    }
+  };
+
+  const handleChange = async (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (name === "name" || name === "email" || name === "mobile") {
+      const error = await validateInput(name, value);
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    }
+  };
+
   const validateForm = () => {
     let validationErrors = {};
 
     if (!formData.name) {
-      validationErrors.name = "Name is required";
+      validationErrors.name = "Name is required.";
     }
 
     if (!formData.mobile) {
-      validationErrors.mobile = "Mobile number is required";
-    } else if (!/^\d+$/.test(formData.mobile)) {
-      validationErrors.mobile = "Mobile number should contain only digits";
+      validationErrors.mobile = "Mobile number is required.";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      validationErrors.mobile = "Mobile number must be exactly 10 digits.";
     }
 
     if (!formData.email) {
-      validationErrors.email = "Email is required";
+      validationErrors.email = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      validationErrors.email = "Email is not valid";
+      validationErrors.email = "Invalid email format.";
     }
 
     if (!formData.password) {
-      validationErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      validationErrors.password = "Password must be at least 6 characters";
+      validationErrors.password = "Password is required.";
+    } else if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        formData.password
+      )
+    ) {
+      validationErrors.password =
+        "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.";
     }
 
     if (!formData.confirmPassword) {
-      validationErrors.confirmPassword = "Confirm Password is required";
+      validationErrors.confirmPassword = "Confirm Password is required.";
     } else if (formData.confirmPassword !== formData.password) {
-      validationErrors.confirmPassword = "Passwords do not match";
+      validationErrors.confirmPassword = "Passwords do not match.";
     }
 
     setErrors(validationErrors);
     return Object.keys(validationErrors).length === 0;
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" }); 
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     setFormStatus("loading");
 
     try {
-      const emailCheck = await axios.get(`http://localhost:3000/users?email=${formData.email}`);
-      const usernameCheck = await axios.get(`http://localhost:3000/users?name=${formData.name}`);
+      const response = await axios.get("http://localhost:3000/users");
 
-      if (emailCheck.data.length > 0) {
-        setErrors({ ...errors, email: "Email already exists" });
-        setFormStatus("");
-        return;
-      }
+      const existingUser = response.data.find(
+        (user) =>
+          user.email === formData.email ||
+          user.name === formData.name ||
+          user.mobile === formData.mobile
+      );
 
-      if (usernameCheck.data.length > 0) {
-        setErrors({ ...errors, name: "Username already exists" });
+      if (existingUser) {
+        const newErrors = {};
+        if (existingUser.email === formData.email) {
+          newErrors.email = "Email already exists.";
+        }
+        if (existingUser.name === formData.name) {
+          newErrors.name = "Username already exists.";
+        }
+        if (existingUser.mobile === formData.mobile) {
+          newErrors.mobile = "Mobile number already exists.";
+        }
+        setErrors(newErrors);
         setFormStatus("");
         return;
       }
@@ -99,68 +298,65 @@ const Signup = () => {
   };
 
   return (
-    <PageContainer>
-      <FormContainer onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
+    <FormContainer onSubmit={handleSubmit}>
+      <h2>Sign Up</h2>
 
-        {formStatus === "error" && <ErrorMessage>{errors.general}</ErrorMessage>}
+      {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
 
-        <FormInput
-          type="text"
-          placeholder="Name"
-          name="name"
-          onChange={handleChange}
-          value={formData.name}
-        />
-        {errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+      <FormInput
+        type="text"
+        placeholder="Name"
+        name="name"
+        onChange={handleChange}
+        value={formData.name}
+      />
+      {errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
 
-        <FormInput
-          type="text"
-          placeholder="Mobile Number"
-          name="mobile"
-          onChange={handleChange}
-          value={formData.mobile}
-        />
-        {errors.mobile && <ErrorMessage>{errors.mobile}</ErrorMessage>}
+      <FormInput
+        type="number"
+        placeholder="Mobile Number"
+        name="mobile"
+        onChange={handleChange}
+        value={formData.mobile}
+      />
+      {errors.mobile && <ErrorMessage>{errors.mobile}</ErrorMessage>}
 
-        <FormInput
-          type="email"
-          placeholder="Email"
-          name="email"
-          onChange={handleChange}
-          value={formData.email}
-        />
-        {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+      <FormInput
+        type="email"
+        placeholder="Email"
+        name="email"
+        onChange={handleChange}
+        value={formData.email}
+      />
+      {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
 
-        <FormInput
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={handleChange}
-          value={formData.password}
-        />
-        {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+      <FormInput
+        type="password"
+        placeholder="Password"
+        name="password"
+        onChange={handleChange}
+        value={formData.password}
+      />
+      {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
 
-        <FormInput
-          type="password"
-          placeholder="Confirm Password"
-          name="confirmPassword"
-          onChange={handleChange}
-          value={formData.confirmPassword}
-        />
-        {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword}</ErrorMessage>}
+      <FormInput
+        type="password"
+        placeholder="Confirm Password"
+        name="confirmPassword"
+        onChange={handleChange}
+        value={formData.confirmPassword}
+      />
+      {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword}</ErrorMessage>}
 
-        <SubmitButton type="submit" disabled={formStatus === "loading"}>
-          {formStatus === "loading" ? "Signing Up..." : "Sign Up"}
-        </SubmitButton>
-      </FormContainer>
-    </PageContainer>
+      <SubmitButton type="submit" disabled={formStatus === "loading"}>
+        {formStatus === "loading" ? "Signing Up..." : "Sign Up"}
+      </SubmitButton>
+    </FormContainer>
   );
 };
 
 export default Signup;
 
-// Animations
 const fadeIn = keyframes`
   from {
     opacity: 0;
