@@ -202,7 +202,7 @@ const Contact = () => {
     setFormStatus("loading");
 
     try {
-      await axios.post("http://localhost:3000/contact", formData);
+      await axios.post("https://cryptotrackingwebsever-1.onrender.com/contact", formData);
       setFormStatus("success");
       alert("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" }); 

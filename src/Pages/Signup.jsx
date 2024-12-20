@@ -579,7 +579,7 @@ const Signup = () => {
 
   const validateInput = async (name, value) => {
     try {
-      const response = await axios.get(`http://localhost:3000/users`);
+      const response = await axios.get(`https://cryptotrackingwebsever-1.onrender.com/users`);
       const existingUser = response.data.find((user) => user[name] === value);
 
       if (existingUser) {
@@ -651,7 +651,7 @@ const Signup = () => {
     setFormStatus("loading");
 
     try {
-      const response = await axios.get("http://localhost:3000/users");
+      const response = await axios.get("https://cryptotrackingwebsever-1.onrender.com/users");
 
       const existingUser = response.data.find(
         (user) =>
@@ -676,7 +676,7 @@ const Signup = () => {
         return;
       }
 
-      await axios.post("http://localhost:3000/users", {
+      await axios.post("https://cryptotrackingwebsever-1.onrender.com/users", {
         name: formData.name,
         mobile: formData.mobile,
         email: formData.email,
