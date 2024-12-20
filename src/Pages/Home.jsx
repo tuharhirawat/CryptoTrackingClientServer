@@ -259,6 +259,7 @@ import { useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 
+
 const Home = () => {
   const [coins, setCoins] = useState([]);
   const navigate = useNavigate();

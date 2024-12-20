@@ -98,6 +98,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsOfService from "./Pages/TermsOfService";
 import Contact from "./Pages/Contact";
 import Watchlist from "./Pages/WishList";
+import CoinDetails from "./Pages/CoinDetail";
 
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -155,6 +156,7 @@ const AppRouter = () => {
               )
             }
           />
+          <Route path="/coin/:coinId" element={<CoinDetails />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
           <Route
