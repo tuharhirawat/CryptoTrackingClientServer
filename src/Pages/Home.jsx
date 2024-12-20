@@ -91,10 +91,9 @@ const Home = () => {
     </HomeContainer>
   );
 };
-
+``
 export default Home;
 
-// Styled Components
 const HomeContainer = styled.div`
   height: 100%;
   width: 100%;
@@ -126,13 +125,14 @@ const Title = styled.h1`
   margin-top: 100px;
   margin-bottom: 163px;
   font-size: 3rem;
-  color: #ffcc00;
+  color: #ffcc00;  
 `;
 
 const CoinsContainer = styled.div`
   width: 100%;
   margin-top: 50px; /* Adjust space between title and coins */
   padding-bottom: 50px;
+  margin-bottom:80px
   
 `;
 
@@ -183,7 +183,7 @@ const CoinName = styled.p`
 `;
 
 const CoinPrice = styled.p`
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: #ffcc00;
 `;
 
