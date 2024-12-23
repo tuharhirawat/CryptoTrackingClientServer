@@ -17,6 +17,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
         <StyledLink to="/">Home</StyledLink>
         {isLoggedIn && <StyledLink to="/airdrop">Airdrop</StyledLink>}
         {isLoggedIn && <StyledLink to="/pricing">Pricing</StyledLink>}
+        {isLoggedIn && <StyledLink to="/myairdrops">My-Airdrops</StyledLink>}
         {isLoggedIn && <StyledLink to="/profile">Profile</StyledLink>} 
         {isLoggedIn && <StyledLink to="/watchlist">WishList</StyledLink>} 
         <StyledLink to="/news">News</StyledLink>
