@@ -99,6 +99,7 @@ import TermsOfService from "./Pages/TermsOfService";
 import Contact from "./Pages/Contact";
 import Watchlist from "./Pages/WishList";
 import CoinDetails from "./Pages/CoinDetail";
+import MyAirdrops from "./Pages/MyAirdrops";
 
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -127,6 +128,16 @@ const AppRouter = () => {
                 Component={Airdrop}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
+              />
+            }
+          />
+          <Route
+            path="/myairdrops"
+            element={
+              <ProtectedRoute
+                isLoggedIn={isLoggedIn}
+                Component={MyAirdrops}
+                user={localStorage.getItem("currentUser")}
               />
             }
           />
