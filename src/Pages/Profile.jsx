@@ -440,7 +440,7 @@ const Profile = ({ setIsLoggedIn }) => {
 
   const handleUpdateProfile = async () => {
     try {
-      await axios.put(`https://cryptotrackingwebsever-1.onrender.com/users/${user.id}`, updatedUser);
+      await axios.put(`http://localhost:5025/api/Users/${user.id}`, updatedUser);
       localStorage.setItem("userData", JSON.stringify(updatedUser));
       setUser(updatedUser);
       setEditing(false);
@@ -453,7 +453,7 @@ const Profile = ({ setIsLoggedIn }) => {
 
   const handleDeleteProfile = async () => {
     try {
-      await axios.delete(`https://cryptotrackingwebsever-1.onrender.com/users/${user.id}`);
+      await axios.delete(`http://localhost:5025/api/Users/${user.id}`);
       localStorage.removeItem("userData");
       setIsLoggedIn(false);
       navigate("/signup");
@@ -476,7 +476,7 @@ const Profile = ({ setIsLoggedIn }) => {
 
     try {
       const updatedPasswordUser = { ...user, password: passwordData.newPassword };
-      await axios.put(`https://cryptotrackingwebsever-1.onrender.com/users/${user.id}`, updatedPasswordUser);
+      await axios.put(`http://localhost:5025/api/Users/${user.id}`, updatedPasswordUser);
       localStorage.setItem("userData", JSON.stringify(updatedPasswordUser));
       setUser(updatedPasswordUser);
       setChangePassword(false);
