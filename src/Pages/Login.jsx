@@ -313,7 +313,7 @@ const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.get("http://localhost:5025/api/Users");
+      const response = await axios.get("/api/Users");
       const user = response.data.find(
         (u) => u.email === formData.email && u.password === formData.password
       );

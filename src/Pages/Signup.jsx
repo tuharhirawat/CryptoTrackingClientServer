@@ -305,7 +305,7 @@ const Signup = () => {
 
     if (["name", "email", "mobile"].includes(name)) {
       try {
-        const response = await axios.get(`http://localhost:5025/api/Users`);
+        const response = await axios.get(`/api/Users`);
         const existingUser = response.data.find((user) => user[name] === value);
         if (existingUser) {
           return `${
@@ -374,18 +374,18 @@ const Signup = () => {
     setFormStatus("loading");
 
     try {
-      await axios.post("http://localhost:5025/api/Users", {
+      await axios.post("/api/Users", {
         username: formData.name,
-        mobile_number: formData.mobile,
+        mobileNumber: formData.mobile,
         email: formData.email,
         password: formData.password,
       });
 
       setFormStatus("success");
-      setSuccessMessage("Congratulations! You are ready to rock!"); // Set the success message
+      setSuccessMessage("Congratulations! You are ready to rock!");
       setTimeout(() => {
         navigate("/login");
-      }, 3000); // Redirect after 3 seconds
+      }, 3000); 
     } catch (err) {
       console.error("Signup error:", err);
       setFormStatus("error");

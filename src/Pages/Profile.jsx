@@ -440,7 +440,7 @@ const Profile = ({ setIsLoggedIn }) => {
 
   const handleUpdateProfile = async () => {
     try {
-      await axios.put(`http://localhost:5025/api/Users/${user.id}`, updatedUser);
+      await axios.put(`/api/Users/${user.id}`, updatedUser);
       localStorage.setItem("userData", JSON.stringify(updatedUser));
       setUser(updatedUser);
       setEditing(false);
@@ -453,7 +453,7 @@ const Profile = ({ setIsLoggedIn }) => {
 
   const handleDeleteProfile = async () => {
     try {
-      await axios.delete(`http://localhost:5025/api/Users/${user.id}`);
+      await axios.delete(`/api/Users/${user.id}`);
       localStorage.removeItem("userData");
       setIsLoggedIn(false);
       navigate("/signup");
@@ -476,7 +476,7 @@ const Profile = ({ setIsLoggedIn }) => {
 
     try {
       const updatedPasswordUser = { ...user, password: passwordData.newPassword };
-      await axios.put(`http://localhost:5025/api/Users/${user.id}`, updatedPasswordUser);
+      await axios.put(`/api/Users/${user.id}`, updatedPasswordUser);
       localStorage.setItem("userData", JSON.stringify(updatedPasswordUser));
       setUser(updatedPasswordUser);
       setChangePassword(false);
@@ -494,21 +494,21 @@ const Profile = ({ setIsLoggedIn }) => {
   return (
     <Background>
       <ProfileContainer>
-        <h2>Welcome, {user.name}!</h2>
+        <h2>Welcome, {user.username}!</h2>
 
         {editing ? (
           <div>
             <FormInput
               type="text"
               name="name"
-              value={updatedUser.name}
+              value={updatedUser.username}
               placeholder="Name"
               onChange={handleInputChange}
             />
             <FormInput
               type="text"
               name="mobile"
-              value={updatedUser.mobile}
+              value={updatedUser.mobileNumber}
               placeholder="Mobile Number"
               onChange={handleInputChange}
             />
@@ -544,13 +544,13 @@ const Profile = ({ setIsLoggedIn }) => {
         ) : (
           <ProfileDetails>
             <p>
-              <strong>Name:</strong> {user.name}
+              <strong>Name:</strong> {user.username}
             </p>
             <p>
               <strong>Email:</strong> {user.email}
             </p>
             <p>
-              <strong>Mobile:</strong> {user.mobile}
+              <strong>Mobile:</strong> {user.mobileNumber}
             </p>
             <EditButton onClick={handleEditToggle}>Edit Profile</EditButton>
             <EditButton onClick={() => setChangePassword(true)}>Change Password</EditButton>
