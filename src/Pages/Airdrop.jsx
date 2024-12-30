@@ -243,24 +243,28 @@ const SuggestionsWrapper = styled.div`
 `;
 
 const SuggestionCard = styled.div`
-  background: rgba(42, 42, 46, 0.5);
+  background: rgba(42, 42, 46, 0.5);;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 15px;
   width: 250px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  // color:white;
+
   transition: transform 0.3s ease;
+  
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.8);
-  }
+
   h3 {
-    color: white;
+  color:white;
     font-size: 1.2rem;
     margin-bottom: 10px;
   }
+
   p {
-    color: white;
+  color:white;
     font-size: 0.9rem;
     margin-bottom: 10px;
   }

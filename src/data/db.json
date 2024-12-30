@@ -6,7 +6,18 @@
       "mobile": "1234567890",
       "email": "johndoe@example.com",
       "password": "password123",
-      "watchlist": []
+      "watchlist": [
+        {
+          "id": 1,
+          "AirdropName": "BlockMesh Network Airdrop",
+          "TokenSymbol": "NaN",
+          "AirdropWebsite": "https://app.blockmesh.xyz/register",
+          "SocialMediaRequirement": "True",
+          "ReferralProgram": "True",
+          "AirdropStatus": "Active",
+          "Description": "Join the BlockMesh Network and receive free airdrop tokens. Participate by registering with your invite code, completing social media tasks, and referring friends to earn additional rewards."
+        }
+      ]
     },
     {
       "id": "2",
