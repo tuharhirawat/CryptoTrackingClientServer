@@ -308,7 +308,7 @@ const CoinDetails = () => {
     ? `$${coinData.market_data.current_price.usd.toFixed(2)}`
     : "Price not available";
   const coinDescription =
-    coinData.description?.en || "Description not available.";
+    coinData.description?.en ;
 
   return (
     <CoinDetailsContainer>
