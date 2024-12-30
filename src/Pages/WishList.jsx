@@ -1,8 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const Watchlist = ({ watchlist, setWatchlist }) => {
+const Watchlist = () => {
+  const [watchlist, setWatchlist] = useState([]);
   const [sortOption, setSortOption] = useState("newlyAdded");
+
+  // Fetch the watchlist from the backend for the logged-in user
+  useEffect(() => {
+    const fetchWatchlist = async () => {
+      try {
+        const userId = "1"; // This should be the logged-in user's ID
+        const response = await fetch(`http://localhost:3000/users/${userId}`);
+        const data = await response.json();
+
+        if (data && data.watchlist) {
+          setWatchlist(data.watchlist);
+        }
+      } catch (error) {
+        console.error("Error fetching watchlist:", error);
+      }
+    };
+
+    fetchWatchlist();
+  }, []);
 
   const sortedWatchlist = [...watchlist].sort((a, b) => {
     switch (sortOption) {
@@ -19,8 +39,30 @@ const Watchlist = ({ watchlist, setWatchlist }) => {
     }
   });
 
-  const removeFromWatchlist = (id) => {
-    setWatchlist(watchlist.filter((item) => item.id !== id));
+  const removeFromWatchlist = async (id) => {
+    // Remove from the watchlist state
+    const updatedWatchlist = watchlist.filter((item) => item.id !== id);
+    setWatchlist(updatedWatchlist);
+
+    // Update the watchlist in the backend
+    try {
+      const userId = "1"; // This should be the logged-in user's ID
+      const response = await fetch(`http://localhost:3000/users/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          watchlist: updatedWatchlist,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update watchlist in the backend.");
+      }
+    } catch (error) {
+      console.error("Error removing from watchlist:", error);
+    }
   };
 
   return (
@@ -67,6 +109,7 @@ const Watchlist = ({ watchlist, setWatchlist }) => {
 
 export default Watchlist;
 
+
 const PageContainer = styled.div`
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -88,6 +131,10 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  margin-top:50px;
+
+  h1{
+  color:white;}
 `;
 
 const SortOptions = styled.div`
