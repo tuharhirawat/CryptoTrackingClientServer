@@ -1,0 +1,74 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "mobile": "1234567890",
+      "email": "johndoe@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "mobile": "9876543210",
+      "email": "janesmith@example.com",
+      "password": "pass456"
+    },
+    {
+      "id": "3",
+      "name": "Alice Johnson",
+      "mobile": "5551234567",
+      "email": "alice@example.com",
+      "password": "alicepass"
+    },
+    {
+      "id": "dfdd",
+      "name": "Tushar",
+      "mobile": "6303733044",
+      "email": "tushar@gmail.com",
+      "password": "11111111"
+    },
+    {
+      "id": "0efc",
+      "name": "Tushar",
+      "mobile": "6303733044",
+      "email": "tushar@gmail.com",
+      "password": "11111111"
+    },
+    {
+      "id": "3ae8",
+      "name": "Ramesh",
+      "mobile": "9999999999",
+      "email": "ramesh@gmail.com",
+      "password": "111111"
+    },
+    {
+      "id": "27ee",
+      "name": "Rohit",
+      "mobile": "1111111111",
+      "email": "rohit@gmail.com",
+      "password": "111111"
+    },
+    {
+      "id": "f2a5",
+      "name": "RC",
+      "mobile": "8688917447",
+      "email": "ramesh1@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "contact": [
+    {
+      "id": "10",
+      "name": "Pranitha",
+      "email": "alice@example.com",
+      "message": "Hi"
+    },
+    {
+      "id": "beec",
+      "name": "Prabitha",
+      "email": "pranitha@gmail.com",
+      "message": "hello\n"
+    }
+  ]
+}
