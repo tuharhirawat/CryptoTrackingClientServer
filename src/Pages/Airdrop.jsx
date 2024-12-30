@@ -1,15 +1,10 @@
+
 // import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 // import styled from "styled-components";
-// import { ListCards } from "../components/ListCards";
 
-// const AirdropPage = ({ watchlist, setWatchlist }) => {
+// const Airdrop = ({ watchlist, setWatchlist }) => {
 //   const navigate = useNavigate();
-//   const [searchTerm, setSearchTerm] = useState("");
-//   const [filteredAirdrops, setFilteredAirdrops] = useState([]);
-//   const [suggestions, setSuggestions] = useState([]);
-//   const [randomAirdrops, setRandomAirdrops] = useState([]);
-
 //   const dummyData = [
 //     {
 //       id: 1,
@@ -35,80 +30,64 @@
 //     },
 //     {
 //       id: 3,
-//       AirdropName: "BlockMesh Network Airdrop",
-//       TokenSymbol: "NaN",
-//       AirdropWebsite: "https://app.blockmesh.xyz/register?invite_code=c3f7ddd9-1707-4605-8fcd-ca6db305e071",
-//       SocialMediaRequirement: "True",
-//       ReferralProgram: "True",
-//       AirdropStatus: "Active",
-//       Description: "Join the BlockMesh Network and receive free airdrop tokens. Participate by registering with your invite code, completing social media tasks, and referring friends to earn additional rewards."
-//     },
-//     {
-//       id: 4,
-//       AirdropName: "NodePay Mining Airdrop",
-//       TokenSymbol: "NaN",
-//       AirdropWebsite: "https://app.nodepay.ai/register?ref=6c2pKkqo9ZYZATv",
-//       SocialMediaRequirement: "True",
-//       ReferralProgram: "True",
-//       AirdropStatus: "Active",
-//       Description: "Participate in the NodePay Airdrop by registering through the invite link, completing social media tasks, and referring others to earn additional rewards. Get free tokens and be part of the NodePay ecosystem."
-//     },
-//     {
-//       id: 5,
 //       AirdropName: "Pipe Network Airdrop",
 //       TokenSymbol: "NaN",
 //       AirdropWebsite: "https://pipecdn.app/signup?ref=dHVzaGFyaG",
 //       SocialMediaRequirement: "True",
 //       ReferralProgram: "True",
 //       AirdropStatus: "Active",
-//       Description: "Join the NodePay Airdrop by signing up via the referral link, completing social media requirements, and inviting friends to earn rewards. Gain free tokens and expand your NodePay network."
+//       Description:
+//         "Join the NodePay Airdrop by signing up via the referral link, completing social media requirements, and inviting friends to earn rewards. Gain free tokens and expand your NodePay network.",
 //     },
 //     {
-//       id : 6,
+//       id: 4,
 //       AirdropName: "OasisAI Airdrop",
 //       TokenSymbol: "NaN",
 //       AirdropWebsite: "https://r.distribute.ai/godhawkeye",
 //       SocialMediaRequirement: "True",
 //       ReferralProgram: "True",
 //       AirdropStatus: "Active",
-//       Description: "Take part in the OasisAI Airdrop by signing up through the referral link, completing social media tasks, and referring others to earn tokens. Join OasisAI to unlock rewards and grow your network."
+//       Description:
+//         "Take part in the OasisAI Airdrop by signing up through the referral link, completing social media tasks, and referring others to earn tokens. Join OasisAI to unlock rewards and grow your network.",
 //     },
 //     {
-//       id : 7,
+//       id: 5,
 //       AirdropName: "KaisarNetwork Airdrop",
 //       TokenSymbol: "NaN",
 //       AirdropWebsite: "https://zero.kaisar.io/register?ref=omfaPs346",
 //       SocialMediaRequirement: "True",
 //       ReferralProgram: "True",
 //       AirdropStatus: "Active",
-//       Description: "Participate in the KaisarNetwork Airdrop by registering through the referral link, completing social media tasks, and referring friends. Unlock free tokens and enhance your participation in the KaisarNetwork community."
+//       Description:
+//         "Participate in the KaisarNetwork Airdrop by registering through the referral link, completing social media tasks, and referring friends. Unlock free tokens and enhance your participation in the KaisarNetwork community.",
 //     },
 //     {
-//       id: 8,
-//       AirdropName: "KaisarNetwork",
+//       id: 6,
+//       AirdropName: "Skyblock Airdrop",
 //       TokenSymbol: "NaN",
-//       AirdropWebsite: "https://zero.kaisar.io/register?ref=omfaPs346",
+//       AirdropWebsite: "https://skyblock.io/register",
 //       SocialMediaRequirement: "True",
 //       ReferralProgram: "True",
 //       AirdropStatus: "Active",
-//       Description: "Participate in the KaisarNetwork Airdrop by registering through the referral link, completing social media tasks, and referring friends. Unlock free tokens and enhance your participation in the KaisarNetwork community."
+//       Description:
+//         "Join the Skyblock Airdrop and receive free tokens by completing simple social media tasks. Refer friends to increase your earnings.",
 //     },
 //     {
-//       id: 9,
-//       AirdropName: "KaisarNetwAirdrop",
+//       id: 7,
+//       AirdropName: "CryptoX Airdrop",
 //       TokenSymbol: "NaN",
-//       AirdropWebsite: "https://zero.kaisar.io/register?ref=omfaPs346",
+//       AirdropWebsite: "https://cryptox.com/register",
 //       SocialMediaRequirement: "True",
 //       ReferralProgram: "True",
 //       AirdropStatus: "Active",
-//       Description : "Participate in the KaisarNetwork Airdrop by registering through the referral link, completing social media tasks, and referring friends. Unlock free tokens and enhance your participation in the KaisarNetwork community."
-//     }
+//       Description:
+//         "Participate in CryptoX Airdrop, complete tasks, and refer friends to earn free tokens. Unlock rewards by joining the CryptoX community.",
+//     },
 //   ];
 
-//   useEffect(() => {
-//     const shuffled = [...dummyData].sort(() => 0.5 - Math.random());
-//     setRandomAirdrops(shuffled.slice(0, 4));
-//   }, []);
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [filteredAirdrops, setFilteredAirdrops] = useState([]);
+//   const [suggestions, setSuggestions] = useState([]);
 
 //   const handleInputChange = (e) => {
 //     const value = e.target.value.toLowerCase().trim();
@@ -149,6 +128,667 @@
 
 //   return (
 //     <PageContainer>
+//       <SuggestionsWrapper>
+//         {dummyData.slice(0, 4).map((airdrop) => (
+//           <SuggestionCard key={airdrop.id}>
+//             <h3>{airdrop.AirdropName}</h3>
+//             <p>{airdrop.Description}</p>
+//             <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
+//               Join Airdrop
+//             </AirdropLink>
+//           </SuggestionCard>
+//         ))}
+//       </SuggestionsWrapper>
+
+//       <SearchSection>
+//         <SearchInput
+//           type="text"
+//           placeholder="Search for airdrop project..."
+//           value={searchTerm}
+//           onChange={handleInputChange}
+//         />
+//         <SearchButton type="button" onClick={handleSearchClick}>
+//           SEARCH
+//         </SearchButton>
+//       </SearchSection>
+
+//       {suggestions.length > 0 && (
+//         <SuggestionsList>
+//           {suggestions.map((airdrop) => (
+//             <SuggestionItem
+//               key={airdrop.id}
+//               onClick={() => handleSuggestionClick(airdrop)}
+//             >
+//               {airdrop.AirdropName}
+//             </SuggestionItem>
+//           ))}
+//         </SuggestionsList>
+//       )}
+
+//       {filteredAirdrops.length > 0 && (
+//         <ResultsContainer>
+//           {filteredAirdrops.map((airdrop) => (
+//             <ProjectDetails key={airdrop.id}>
+//               <h3>{airdrop.AirdropName}</h3>
+//               <p><strong>Description:</strong> {airdrop.Description}</p>
+//               <p><strong>Status:</strong> {airdrop.AirdropStatus}</p>
+//               <ActionsContainer>
+//                 <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
+//                   Join Airdrop
+//                 </AirdropLink>
+//                 <WatchlistButton onClick={() => handleAddToWatchlist(airdrop)}>
+//                   Add to Watchlist
+//                 </WatchlistButton>
+//               </ActionsContainer>
+//             </ProjectDetails>
+//           ))}
+//         </ResultsContainer>
+//       )}
+
+//       {filteredAirdrops.length === 0 && searchTerm !== "" && (
+//         <NoResults>No results found</NoResults>
+//       )}
+//     </PageContainer>
+//   );
+// };
+
+// export default Airdrop;
+
+// const PageContainer = styled.div`
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   font-family: Arial, sans-serif;
+//   padding: 0 20px;
+//   background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// `;
+
+// const SuggestionsWrapper = styled.div`
+//   display: flex;
+//   gap: 60px;
+//   margin-bottom: 20px;
+//   padding: 10px 0;
+//   /* Removed overflow-x: scroll */
+// `;
+
+// const SuggestionCard = styled.div`
+//   background: rgba(42, 42, 46, 0.5);;
+//   border: 1px solid #ddd;
+//   border-radius: 4px;
+//   padding: 15px;
+//   width: 250px;
+//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+//   // color:white;
+
+//   transition: transform 0.3s ease;
+  
+//   &:hover {
+//     transform: scale(1.05);
+//     box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.8);
+
+//   h3 {
+//   color:white;
+//     font-size: 1.2rem;
+//     margin-bottom: 10px;
+//   }
+
+//   p {
+//   color:white;
+//     font-size: 0.9rem;
+//     margin-bottom: 10px;
+//   }
+// `;
+
+// const AirdropLink = styled.a`
+//   color: #007bff;
+//   text-decoration: none;
+//   font-size: 1rem;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// `;
+
+// const SearchSection = styled.div`
+//   margin-top: 20px;
+//   display: flex;
+//   gap: 10px;
+//   align-items: center;
+// `;
+
+// const SearchInput = styled.input`
+//   padding: 10px;
+//   font-size: 1rem;
+//   border-radius: 5px;
+//   border: 1px solid #ccc;
+//   width: 300px;
+// `;
+
+// const SearchButton = styled.button`
+//    background-color: rgb(60, 50, 54);
+//   color: white;
+//   border: 3px solid transparent;
+//   padding: 10px;
+//   font-size: 1rem;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease, border-color 0.3s ease;
+
+//   &:hover {
+//     transition-duration: 1s;
+//     color: black;
+//     background-color: gold;
+//   }
+// `;
+
+// const SuggestionsList = styled.ul`
+//   list-style: none;
+//   padding: 0;
+//   margin: 10px 0;
+//   background-color: #f9f9f9;
+//   border-radius: 4px;
+//   width: 300px;
+//   border: 1px solid #ddd;
+// `;
+
+// const SuggestionItem = styled.li`
+//   padding: 10px;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: #f1f1f1;
+//   }
+// `;
+
+// const ResultsContainer = styled.div`
+//   margin-top: 20px;
+// `;
+
+// const ProjectDetails = styled.div`
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//   padding: 20px;
+//   margin-bottom: 20px;
+// `;
+
+// const ActionsContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 10px;
+// `;
+
+// const WatchlistButton = styled.button`
+//   background-color: #007bff;
+//   color: white;
+//   padding: 10px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
+
+// const NoResults = styled.p`
+//   color: #777;
+//   font-size: 1.1rem;
+// `;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import styled from "styled-components";
+// import axios from "axios";
+
+// const Airdrop = ({ watchlist, setWatchlist }) => {
+//   const navigate = useNavigate();
+//   const [airdrops, setAirdrops] = useState([]);
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [filteredAirdrops, setFilteredAirdrops] = useState([]);
+//   const [suggestions, setSuggestions] = useState([]);
+
+//   useEffect(() => {
+//     const fetchAirdrops = async () => {
+//       try {
+//         const response = await axios.get("/api/DeafaultAirdrop");
+//         setAirdrops(response.data);
+//       } catch (error) {
+//         console.error("Error fetching airdrop data:", error);
+//       }
+//     };
+
+//     fetchAirdrops();
+//   }, []);
+
+//   const handleInputChange = (e) => {
+//     const value = e.target.value.toLowerCase().trim();
+//     setSearchTerm(value);
+
+//     if (value === "") {
+//       setSuggestions([]);
+//       setFilteredAirdrops([]);
+//       return;
+//     }
+
+//     const matches = airdrops.filter((airdrop) =>
+//       airdrop.AirdropName.toLowerCase().includes(value)
+//     );
+//     setSuggestions(matches);
+//   };
+
+//   const handleSearchClick = () => {
+//     const matches = airdrops.filter((airdrop) =>
+//       airdrop.AirdropName.toLowerCase().includes(searchTerm)
+//     );
+//     setFilteredAirdrops(matches);
+//     setSuggestions([]);
+//   };
+
+//   const handleSuggestionClick = (airdrop) => {
+//     setSearchTerm(airdrop.AirdropName);
+//     setFilteredAirdrops([airdrop]);
+//     setSuggestions([]);
+//   };
+
+//   const handleAddToWatchlist = (airdrop) => {
+//     if (!watchlist.some((item) => item.id === airdrop.id)) {
+//       setWatchlist([...watchlist, airdrop]);
+//     }
+//     navigate("/watchlist");
+//   };
+
+//   return (
+//     <PageContainer>
+//       <SuggestionsWrapper>
+//         {airdrops.slice(0, 4).map((airdrop) => (
+//           <SuggestionCard key={airdrop.id}>
+//             <h3>{airdrop.AirdropName}</h3>
+//             <p>{airdrop.Description}</p>
+//             <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
+//               Join Airdrop
+//             </AirdropLink>
+//           </SuggestionCard>
+//         ))}
+//       </SuggestionsWrapper>
+
+//       <SearchSection>
+//         <SearchInput
+//           type="text"
+//           placeholder="Search for airdrop project..."
+//           value={searchTerm}
+//           onChange={handleInputChange}
+//         />
+//         <SearchButton type="button" onClick={handleSearchClick}>
+//           SEARCH
+//         </SearchButton>
+//       </SearchSection>
+
+//       {suggestions.length > 0 && (
+//         <SuggestionsList>
+//           {suggestions.map((airdrop) => (
+//             <SuggestionItem
+//               key={airdrop.id}
+//               onClick={() => handleSuggestionClick(airdrop)}
+//             >
+//               {airdrop.AirdropName}
+//             </SuggestionItem>
+//           ))}
+//         </SuggestionsList>
+//       )}
+
+//       {filteredAirdrops.length > 0 && (
+//         <ResultsContainer>
+//           {filteredAirdrops.map((airdrop) => (
+//             <ProjectDetails key={airdrop.id}>
+//               <h3>{airdrop.AirdropName}</h3>
+//               <p><strong>Description:</strong> {airdrop.Description}</p>
+//               <p><strong>Status:</strong> {airdrop.AirdropStatus}</p>
+//               <ActionsContainer>
+//                 <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
+//                   Join Airdrop
+//                 </AirdropLink>
+//                 <WatchlistButton onClick={() => handleAddToWatchlist(airdrop)}>
+//                   Add to Watchlist
+//                 </WatchlistButton>
+//               </ActionsContainer>
+//             </ProjectDetails>
+//           ))}
+//         </ResultsContainer>
+//       )}
+
+//       {filteredAirdrops.length === 0 && searchTerm !== "" && (
+//         <NoResults>No results found</NoResults>
+//       )}
+//     </PageContainer>
+//   );
+// };
+
+// export default Airdrop;
+
+// const PageContainer = styled.div`
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   font-family: Arial, sans-serif;
+//   padding: 0 20px;
+//   background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// `;
+
+// const SuggestionsWrapper = styled.div`
+//   display: flex;
+//   gap: 60px;
+//   margin-bottom: 20px;
+//   padding: 10px 0;
+// `;
+
+// const SuggestionCard = styled.div`
+//   background: rgba(42, 42, 46, 0.5);
+//   border: 1px solid #ddd;
+//   border-radius: 4px;
+//   padding: 15px;
+//   width: 250px;
+//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+//   transition: transform 0.3s ease;
+  
+//   &:hover {
+//     transform: scale(1.05);
+//     box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.8);
+//   }
+
+//   h3 {
+//     color: white;
+//     font-size: 1.2rem;
+//     margin-bottom: 10px;
+//   }
+
+//   p {
+//     color: white;
+//     font-size: 0.9rem;
+//     margin-bottom: 10px;
+//   }
+// `;
+
+// const AirdropLink = styled.a`
+//   color: #007bff;
+//   text-decoration: none;
+//   font-size: 1rem;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// `;
+
+// const SearchSection = styled.div`
+//   margin-top: 20px;
+//   display: flex;
+//   gap: 10px;
+//   align-items: center;
+// `;
+
+// const SearchInput = styled.input`
+//   padding: 10px;
+//   font-size: 1rem;
+//   border-radius: 5px;
+//   border: 1px solid #ccc;
+//   width: 300px;
+// `;
+
+// const SearchButton = styled.button`
+//   background-color: rgb(60, 50, 54);
+//   color: white;
+//   border: 3px solid transparent;
+//   padding: 10px;
+//   font-size: 1rem;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease, border-color 0.3s ease;
+
+//   &:hover {
+//     transition-duration: 1s;
+//     color: black;
+//     background-color: gold;
+//   }
+// `;
+
+// const SuggestionsList = styled.ul`
+//   list-style: none;
+//   padding: 0;
+//   margin: 10px 0;
+//   background-color: #f9f9f9;
+//   border-radius: 4px;
+//   width: 300px;
+//   border: 1px solid #ddd;
+// `;
+
+// const SuggestionItem = styled.li`
+//   padding: 10px;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: #f1f1f1;
+//   }
+// `;
+
+// const ResultsContainer = styled.div`
+//   margin-top: 20px;
+// `;
+
+// const ProjectDetails = styled.div`
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//   padding: 20px;
+//   margin-bottom: 20px;
+// `;
+
+// const ActionsContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 10px;
+// `;
+
+// const WatchlistButton = styled.button`
+//   background-color: #007bff;
+//   color: white;
+//   padding: 10px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
+
+// const NoResults = styled.p`
+//   color: #777;
+//   font-size: 1.1rem;
+// `;
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import styled from "styled-components";
+
+// const Airdrop = ({ watchlist, setWatchlist }) => {
+//   const navigate = useNavigate();
+//   const dummyData = [
+//     {
+//       id: 1,
+//       AirdropName: "BlockMesh Network Airdrop",
+//       TokenSymbol: "NaN",
+//       AirdropWebsite: "https://app.blockmesh.xyz/register",
+//       SocialMediaRequirement: "True",
+//       ReferralProgram: "True",
+//       AirdropStatus: "Active",
+//       Description:
+//         "Join the BlockMesh Network and receive free airdrop tokens. Participate by registering with your invite code, completing social media tasks, and referring friends to earn additional rewards.",
+//     },
+//     {
+//       id: 2,
+//       AirdropName: "NodePay Airdrop",
+//       TokenSymbol: "NaN",
+//       AirdropWebsite: "https://app.nodepay.ai/register",
+//       SocialMediaRequirement: "True",
+//       ReferralProgram: "True",
+//       AirdropStatus: "Active",
+//       Description:
+//         "Participate in the NodePay Airdrop by registering through the invite link, completing social media tasks, and referring others to earn additional rewards. Get free tokens and be part of the NodePay ecosystem.",
+//     },
+//     {
+//       id: 3,
+//       AirdropName: "Pipe Network Airdrop",
+//       TokenSymbol: "NaN",
+//       AirdropWebsite: "https://pipecdn.app/signup?ref=dHVzaGFyaG",
+//       SocialMediaRequirement: "True",
+//       ReferralProgram: "True",
+//       AirdropStatus: "Active",
+//       Description:
+//         "Join the NodePay Airdrop by signing up via the referral link, completing social media requirements, and inviting friends to earn rewards. Gain free tokens and expand your NodePay network.",
+//     },
+//     {
+//       id: 4,
+//       AirdropName: "OasisAI Airdrop",
+//       TokenSymbol: "NaN",
+//       AirdropWebsite: "https://r.distribute.ai/godhawkeye",
+//       SocialMediaRequirement: "True",
+//       ReferralProgram: "True",
+//       AirdropStatus: "Active",
+//       Description:
+//         "Take part in the OasisAI Airdrop by signing up through the referral link, completing social media tasks, and referring others to earn tokens. Join OasisAI to unlock rewards and grow your network.",
+//     },
+//     {
+//       id: 5,
+//       AirdropName: "KaisarNetwork Airdrop",
+//       TokenSymbol: "NaN",
+//       AirdropWebsite: "https://zero.kaisar.io/register?ref=omfaPs346",
+//       SocialMediaRequirement: "True",
+//       ReferralProgram: "True",
+//       AirdropStatus: "Active",
+//       Description:
+//         "Participate in the KaisarNetwork Airdrop by registering through the referral link, completing social media tasks, and referring friends. Unlock free tokens and enhance your participation in the KaisarNetwork community.",
+//     },
+//     {
+//       id: 6,
+//       AirdropName: "Skyblock Airdrop",
+//       TokenSymbol: "NaN",
+//       AirdropWebsite: "https://skyblock.io/register",
+//       SocialMediaRequirement: "True",
+//       ReferralProgram: "True",
+//       AirdropStatus: "Active",
+//       Description:
+//         "Join the Skyblock Airdrop and receive free tokens by completing simple social media tasks. Refer friends to increase your earnings.",
+//     },
+//     {
+//       id: 7,
+//       AirdropName: "CryptoX Airdrop",
+//       TokenSymbol: "NaN",
+//       AirdropWebsite: "https://cryptox.com/register",
+//       SocialMediaRequirement: "True",
+//       ReferralProgram: "True",
+//       AirdropStatus: "Active",
+//       Description:
+//         "Participate in CryptoX Airdrop, complete tasks, and refer friends to earn free tokens. Unlock rewards by joining the CryptoX community.",
+//     },
+//   ];
+
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [filteredAirdrops, setFilteredAirdrops] = useState([]);
+//   const [suggestions, setSuggestions] = useState([]);
+
+//   // Handle adding airdrop to watchlist
+//   const handleAddToWatchlist = async (airdrop) => {
+//     if (!watchlist.some((item) => item.id === airdrop.id)) {
+//       const updatedWatchlist = [...watchlist, airdrop];
+//       setWatchlist(updatedWatchlist);
+
+//       // Update the backend watchlist
+//       try {
+//         const userId = "1"; // This should be the logged-in user's ID
+//         const response = await fetch(`/api/Users/${userId}`, {
+//           method: "PATCH",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({
+//             watchlist: updatedWatchlist
+//           }),
+//         });
+
+//         if (!response.ok) {
+//           throw new Error("Failed to update watchlist in the backend.");
+//         }
+//       } catch (error) {
+//         console.error("Error updating watchlist:", error);
+//       }
+//     }
+//     navigate("/watchlist");
+//   };
+
+//   const handleInputChange = (e) => {
+//     const value = e.target.value.toLowerCase().trim();
+//     setSearchTerm(value);
+
+//     if (value === "") {
+//       setSuggestions([]);
+//       setFilteredAirdrops([]);
+//       return;
+//     }
+
+//     const matches = dummyData.filter((airdrop) =>
+//       airdrop.AirdropName.toLowerCase().includes(value)
+//     );
+//     setSuggestions(matches);
+//   };
+
+//   const handleSearchClick = () => {
+//     const matches = dummyData.filter((airdrop) =>
+//       airdrop.AirdropName.toLowerCase().includes(searchTerm)
+//     );
+//     setFilteredAirdrops(matches);
+//     setSuggestions([]);
+//   };
+
+//   const handleSuggestionClick = (airdrop) => {
+//     setSearchTerm(airdrop.AirdropName);
+//     setFilteredAirdrops([airdrop]);
+//     setSuggestions([]);
+//   };
+
+//   return (
+//     <PageContainer>
+//       {/* Scrollable Airdrop Suggestions */}
+//       <SuggestionsWrapper>
+//         {dummyData.slice(0, 4).map((airdrop) => (
+//           <SuggestionCard key={airdrop.id}>
+//             <h3>{airdrop.AirdropName}</h3>
+//             <p>{airdrop.Description}</p>
+//             <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
+//               Join Airdrop
+//             </AirdropLink>
+//           </SuggestionCard>
+//         ))}
+//       </SuggestionsWrapper>
+
 //       <SearchSection>
 //         <SearchInput
 //           type="text"
@@ -189,9 +829,7 @@
 //                 <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
 //                   Join Airdrop
 //                 </AirdropLink>
-//                 <WatchlistButton
-//                   onClick={() => handleAddToWatchlist(airdrop)}
-//                 >
+//                 <WatchlistButton onClick={() => handleAddToWatchlist(airdrop)}>
 //                   Add to Watchlist
 //                 </WatchlistButton>
 //               </ActionsContainer>
@@ -203,199 +841,412 @@
 //       {filteredAirdrops.length === 0 && searchTerm !== "" && (
 //         <NoResults>No results found</NoResults>
 //       )}
-
-//       <ListCards airdrops={randomAirdrops} />
 //     </PageContainer>
 //   );
 // };
 
-// export default AirdropPage;
+// export default Airdrop;
 
-// const PageContainer = styled.div`
-//   margin-top: 52px;
-//   padding: 20px;
-//   font-family: Arial, sans-serif;
-//   background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
-//   background-size: auto;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   height : 70vh;
-// `;
 
-// const SearchSection = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   margin-bottom: 20px;
-// `;
 
-// const SearchInput = styled.input`
-//   width: 60%;
-//   padding: 12px;
-//   margin-right: 10px;
-//   font-size: 1rem;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-// `;
 
-// const SearchButton = styled.button`
-//   padding: 12px 20px;
-//   font-size: 1rem;
-//   background-color: #007bff;
-//   color: white;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-// `;
 
-// const SuggestionsList = styled.ul`
-//   list-style: none;
-//   padding: 0;
-//   max-width: 70%;
-//   margin: 10px auto;
-// `;
 
-// const SuggestionItem = styled.li`
-//   background: #f9f9f9;
-//   padding: 10px;
-//   margin: 5px 0;
-//   cursor: pointer;
-//   border: 1px solid #ddd;
-//   border-radius: 4px;
-// `;
 
-// const ResultsContainer = styled.div`
-//   max-width: 70%;
-//   margin: 20px auto;
-// `;
 
-// const ProjectDetails = styled.div`
-//   background: #f9f9f9;
-//   border: 1px solid #ddd;
-//   border-radius: 4px;
-//   padding: 20px;
-//   margin-bottom: 20px;
-// `;
 
-// const ActionsContainer = styled.div`
-//   display: flex;
-//   gap: 10px;
-// `;
 
-// const AirdropLink = styled.a`
-//   display: inline-block;
-//   padding: 8px 15px;
-//   background-color: #28a745;
-//   color: white;
-//   text-decoration: none;
-//   border-radius: 4px;
-// `;
 
-// const WatchlistButton = styled.button`
-//   padding: 8px 15px;
-//   background-color: #ffc107;
-//   color: black;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-// `;
 
-// const NoResults = styled.p`
-//   color: #ff0000;
-//   font-weight: bold;
-//   margin-top: 20px;
-// `;
+// import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import styled from "styled-components";
+// import axios from "axios";
+
+// const Airdrop = ({ watchlist, setWatchlist }) => {
+//   const navigate = useNavigate();
+//   const [airdrops, setAirdrops] = useState([]);
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [filteredAirdrops, setFilteredAirdrops] = useState([]);
+//   const [suggestions, setSuggestions] = useState([]);
+
+//   // Fetch airdrop data from the API
+//   useEffect(() => {
+//     const fetchAirdrops = async () => {
+//       try {
+//         const response = await axios.get("/api/DeafaultAirdrop");
+//         setAirdrops(response.data);
+//       } catch (error) {
+//         console.error("Error fetching airdrop data:", error);
+//       }
+//     };
+
+//     fetchAirdrops();
+//   }, []);
+
+//   // Handle adding airdrop to watchlist
+//   const handleAddToWatchlist = async (airdrop) => {
+//     if (!watchlist.some((item) => item.id === airdrop.id)) {
+//       const updatedWatchlist = [...watchlist, airdrop];
+//       setWatchlist(updatedWatchlist);
+
+//       // Update the backend watchlist
+//       try {
+//         const userId = "1"; // This should be the logged-in user's ID
+//         const response = await fetch(`/api/Users/${userId}`, {
+//           method: "PATCH",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({
+//             watchlist: updatedWatchlist,
+//           }),
+//         });
+
+//         if (!response.ok) {
+//           throw new Error("Failed to update watchlist in the backend.");
+//         }
+//       } catch (error) {
+//         console.error("Error updating watchlist:", error);
+//       }
+//     }
+//     navigate("/watchlist");
+//   };
+
+//   const handleInputChange = (e) => {
+//     const value = e.target.value.toLowerCase().trim();
+//     setSearchTerm(value);
+
+//     if (value === "") {
+//       setSuggestions([]);
+//       setFilteredAirdrops([]);
+//       return;
+//     }
+
+//     const matches = airdrops.filter((airdrop) =>
+//       airdrop.airdropName.toLowerCase().includes(value)
+//     );
+//     setSuggestions(matches);
+//   };
+
+//   const handleSearchClick = () => {
+//     const matches = airdrops.filter((airdrop) =>
+//       airdrop.airdropName.toLowerCase().includes(searchTerm)
+//     );
+//     setFilteredAirdrops(matches);
+//     setSuggestions([]);
+//   };
+
+//   const handleSuggestionClick = (airdrop) => {
+//     setSearchTerm(airdrop.airdropName);
+//     setFilteredAirdrops([airdrop]);
+//     setSuggestions([]);
+//   };
+
+//   return (
+//     <PageContainer>
+//       {/* Scrollable Airdrop Suggestions */}
+//       <SuggestionsWrapper>
+//         {airdrops.slice(0, 4).map((airdrop) => (
+//           <SuggestionCard key={airdrop.id}>
+//             <h3>{airdrop.airdropName}</h3>
+//             <p>{airdrop.description}</p>
+//             <AirdropLink href={airdrop.airdropWebsite} target="_blank">
+//               Join Airdrop
+//             </AirdropLink>
+//           </SuggestionCard>
+//         ))}
+//       </SuggestionsWrapper>
+
+//       <SearchSection>
+//         <SearchInput
+//           type="text"
+//           placeholder="Search for airdrop project..."
+//           value={searchTerm}
+//           onChange={handleInputChange}
+//         />
+//         <SearchButton type="button" onClick={handleSearchClick}>
+//           SEARCH
+//         </SearchButton>
+//       </SearchSection>
+
+//       {suggestions.length > 0 && (
+//         <SuggestionsList>
+//           {suggestions.map((airdrop) => (
+//             <SuggestionItem
+//               key={airdrop.id}
+//               onClick={() => handleSuggestionClick(airdrop)}
+//             >
+//               {airdrop.airdropName}
+//             </SuggestionItem>
+//           ))}
+//         </SuggestionsList>
+//       )}
+
+//       {filteredAirdrops.length > 0 && (
+//         <ResultsContainer>
+//           {filteredAirdrops.map((airdrop) => (
+//             <ProjectDetails key={airdrop.id}>
+//               <h3>{airdrop.airdropName}</h3>
+//               <p>
+//                 <strong>Description:</strong> {airdrop.description}
+//               </p>
+//               <p>
+//                 <strong>Status:</strong> {airdrop.airdropstatus}
+//               </p>
+//               <ActionsContainer>
+//                 <AirdropLink href={airdrop.airdropWebsite} target="_blank">
+//                   Join Airdrop
+//                 </AirdropLink>
+//                 <WatchlistButton onClick={() => handleAddToWatchlist(airdrop)}>
+//                   Add to Watchlist
+//                 </WatchlistButton>
+//               </ActionsContainer>
+//             </ProjectDetails>
+//           ))}
+//         </ResultsContainer>
+//       )}
+
+//       {filteredAirdrops.length === 0 && searchTerm !== "" && (
+//         <NoResults>No results found</NoResults>
+//       )}
+//     </PageContainer>
+//   );
+// };
+
+// export default Airdrop;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import styled from "styled-components";
+// import axios from "axios";
+
+// const Airdrop = ({ watchlist, setWatchlist }) => {
+//   const navigate = useNavigate();
+//   const [airdrops, setAirdrops] = useState([]);
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [filteredAirdrops, setFilteredAirdrops] = useState([]);
+//   const [suggestions, setSuggestions] = useState([]);
+
+//   // Fetch airdrop data from the API
+  // useEffect(() => {
+  //   const fetchAirdrops = async () => {
+  //     try {
+  //       const response = await axios.get("/api/DeafaultAirdrop");
+  //       setAirdrops(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching airdrop data:", error);
+  //     }
+  //   };
+
+//     fetchAirdrops();
+//   }, []);
+
+//   // Handle adding airdrop to watchlist
+//   const handleAddToWatchlist = async (airdrop) => {
+//     if (!watchlist.some((item) => item.id === airdrop.id)) {
+//       const updatedWatchlist = [...watchlist, airdrop];
+//       setWatchlist(updatedWatchlist);
+
+//       // Update the backend watchlist
+//       try {
+//         const userId = "1"; // This should be the logged-in user's ID
+//         const response = await fetch(`/api/Users/${userId}`, {
+//           method: "PATCH",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({
+//             watchlist: updatedWatchlist,
+//           }),
+//         });
+
+//         if (!response.ok) {
+//           throw new Error("Failed to update watchlist in the backend.");
+//         }
+
+//         // Fetch the latest watchlist from the backend
+//         const updatedResponse = await response.json();
+//         setWatchlist(updatedResponse.watchlist);
+//       } catch (error) {
+//         console.error("Error updating watchlist:", error);
+//       }
+//     }
+//     navigate("/watchlist");
+//   };
+
+//   const handleInputChange = (e) => {
+//     const value = e.target.value.toLowerCase().trim();
+//     setSearchTerm(value);
+
+//     if (value === "") {
+//       setSuggestions([]);
+//       setFilteredAirdrops([]);
+//       return;
+//     }
+
+//     const matches = airdrops.filter((airdrop) =>
+//       airdrop.airdropName.toLowerCase().includes(value)
+//     );
+//     setSuggestions(matches);
+//   };
+
+//   const handleSearchClick = () => {
+//     const matches = airdrops.filter((airdrop) =>
+//       airdrop.airdropName.toLowerCase().includes(searchTerm)
+//     );
+//     setFilteredAirdrops(matches);
+//     setSuggestions([]);
+//   };
+
+//   const handleSuggestionClick = (airdrop) => {
+//     setSearchTerm(airdrop.airdropName);
+//     setFilteredAirdrops([airdrop]);
+//     setSuggestions([]);
+//   };
+
+//   return (
+//     <PageContainer>
+//       <SuggestionsWrapper>
+//         {airdrops.slice(0, 4).map((airdrop) => (
+//           <SuggestionCard key={airdrop.id}>
+//             <h3>{airdrop.airdropName}</h3>
+//             <p>{airdrop.description}</p>
+//             <AirdropLink href={airdrop.airdropWebsite} target="_blank">
+//               Join Airdrop
+//             </AirdropLink>
+//           </SuggestionCard>
+//         ))}
+//       </SuggestionsWrapper>
+
+//       <SearchSection>
+//         <SearchInput
+//           type="text"
+//           placeholder="Search for airdrop project..."
+//           value={searchTerm}
+//           onChange={handleInputChange}
+//         />
+//         <SearchButton type="button" onClick={handleSearchClick}>
+//           SEARCH
+//         </SearchButton>
+//       </SearchSection>
+
+//       {suggestions.length > 0 && (
+//         <SuggestionsList>
+//           {suggestions.map((airdrop) => (
+//             <SuggestionItem
+//               key={airdrop.id}
+//               onClick={() => handleSuggestionClick(airdrop)}
+//             >
+//               {airdrop.airdropName}
+//             </SuggestionItem>
+//           ))}
+//         </SuggestionsList>
+//       )}
+
+//       {filteredAirdrops.length > 0 && (
+//         <ResultsContainer>
+//           {filteredAirdrops.map((airdrop) => (
+//             <ProjectDetails key={airdrop.id}>
+//               <h3>{airdrop.airdropName}</h3>
+//               <p>
+//                 <strong>Description:</strong> {airdrop.description}
+//               </p>
+//               <p>
+//                 <strong>Status:</strong> {airdrop.airdropstatus}
+//               </p>
+//               <ActionsContainer>
+//                 <AirdropLink href={airdrop.airdropWebsite} target="_blank">
+//                   Join Airdrop
+//                 </AirdropLink>
+//                 <WatchlistButton onClick={() => handleAddToWatchlist(airdrop)}>
+//                   Add to Watchlist
+//                 </WatchlistButton>
+//               </ActionsContainer>
+//             </ProjectDetails>
+//           ))}
+//         </ResultsContainer>
+//       )}
+
+//       {filteredAirdrops.length === 0 && searchTerm !== "" && (
+//         <NoResults>No results found</NoResults>
+//       )}
+//     </PageContainer>
+//   );
+// };
+
+// export default Airdrop;
+
+
+
 
 
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
-const Airdrop = ({ watchlist, setWatchlist }) => {
+const Airdrop = ({ user }) => {
   const navigate = useNavigate();
-  const dummyData = [
-    {
-      id: 1,
-      AirdropName: "BlockMesh Network Airdrop",
-      TokenSymbol: "NaN",
-      AirdropWebsite: "https://app.blockmesh.xyz/register",
-      SocialMediaRequirement: "True",
-      ReferralProgram: "True",
-      AirdropStatus: "Active",
-      Description:
-        "Join the BlockMesh Network and receive free airdrop tokens. Participate by registering with your invite code, completing social media tasks, and referring friends to earn additional rewards.",
-    },
-    {
-      id: 2,
-      AirdropName: "NodePay Airdrop",
-      TokenSymbol: "NaN",
-      AirdropWebsite: "https://app.nodepay.ai/register",
-      SocialMediaRequirement: "True",
-      ReferralProgram: "True",
-      AirdropStatus: "Active",
-      Description:
-        "Participate in the NodePay Airdrop by registering through the invite link, completing social media tasks, and referring others to earn additional rewards. Get free tokens and be part of the NodePay ecosystem.",
-    },
-    {
-      id: 3,
-      AirdropName: "Pipe Network Airdrop",
-      TokenSymbol: "NaN",
-      AirdropWebsite: "https://pipecdn.app/signup?ref=dHVzaGFyaG",
-      SocialMediaRequirement: "True",
-      ReferralProgram: "True",
-      AirdropStatus: "Active",
-      Description:
-        "Join the NodePay Airdrop by signing up via the referral link, completing social media requirements, and inviting friends to earn rewards. Gain free tokens and expand your NodePay network.",
-    },
-    {
-      id: 4,
-      AirdropName: "OasisAI Airdrop",
-      TokenSymbol: "NaN",
-      AirdropWebsite: "https://r.distribute.ai/godhawkeye",
-      SocialMediaRequirement: "True",
-      ReferralProgram: "True",
-      AirdropStatus: "Active",
-      Description:
-        "Take part in the OasisAI Airdrop by signing up through the referral link, completing social media tasks, and referring others to earn tokens. Join OasisAI to unlock rewards and grow your network.",
-    },
-    {
-      id: 5,
-      AirdropName: "KaisarNetwork Airdrop",
-      TokenSymbol: "NaN",
-      AirdropWebsite: "https://zero.kaisar.io/register?ref=omfaPs346",
-      SocialMediaRequirement: "True",
-      ReferralProgram: "True",
-      AirdropStatus: "Active",
-      Description:
-        "Participate in the KaisarNetwork Airdrop by registering through the referral link, completing social media tasks, and referring friends. Unlock free tokens and enhance your participation in the KaisarNetwork community.",
-    },
-    {
-      id: 6,
-      AirdropName: "Skyblock Airdrop",
-      TokenSymbol: "NaN",
-      AirdropWebsite: "https://skyblock.io/register",
-      SocialMediaRequirement: "True",
-      ReferralProgram: "True",
-      AirdropStatus: "Active",
-      Description:
-        "Join the Skyblock Airdrop and receive free tokens by completing simple social media tasks. Refer friends to increase your earnings.",
-    },
-    {
-      id: 7,
-      AirdropName: "CryptoX Airdrop",
-      TokenSymbol: "NaN",
-      AirdropWebsite: "https://cryptox.com/register",
-      SocialMediaRequirement: "True",
-      ReferralProgram: "True",
-      AirdropStatus: "Active",
-      Description:
-        "Participate in CryptoX Airdrop, complete tasks, and refer friends to earn free tokens. Unlock rewards by joining the CryptoX community.",
-    },
-  ];
-
+  const [airdrops, setAirdrops] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredAirdrops, setFilteredAirdrops] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
+
+  // Fetch airdrop data from the server
+  useEffect(() => {
+    const fetchAirdrops = async () => {
+      try {
+        const response = await axios.get("/api/DeafaultAirdrop");
+        setAirdrops(response.data);
+      } catch (error) {
+        console.error("Error fetching airdrop data:", error);
+      }
+    };
+
+    fetchAirdrops();
+  }, []);
+
+  // Handle adding airdrop to user's watchlist
+  const handleAddToWatchlist = async (airdrop) => {
+    try {
+      const response = await axios.patch(`/api/Users/${user.id}`, {
+        watchlist: [...user.watchlist, airdrop],
+      });
+
+      if (response.status === 200) {
+        alert("Airdrop added to your watchlist successfully!");
+        navigate("/watchlist"); // Redirect to the MyAirdrops page
+      } else {
+        console.error("Error updating the server watchlist");
+      }
+    } catch (error) {
+      console.error("Error adding to watchlist:", error);
+    }
+  };
 
   const handleInputChange = (e) => {
     const value = e.target.value.toLowerCase().trim();
@@ -407,42 +1258,34 @@ const Airdrop = ({ watchlist, setWatchlist }) => {
       return;
     }
 
-    const matches = dummyData.filter((airdrop) =>
-      airdrop.AirdropName.toLowerCase().includes(value)
+    const matches = airdrops.filter((airdrop) =>
+      airdrop.airdropName.toLowerCase().includes(value)
     );
     setSuggestions(matches);
   };
 
   const handleSearchClick = () => {
-    const matches = dummyData.filter((airdrop) =>
-      airdrop.AirdropName.toLowerCase().includes(searchTerm)
+    const matches = airdrops.filter((airdrop) =>
+      airdrop.airdropName.toLowerCase().includes(searchTerm)
     );
     setFilteredAirdrops(matches);
     setSuggestions([]);
   };
 
   const handleSuggestionClick = (airdrop) => {
-    setSearchTerm(airdrop.AirdropName);
+    setSearchTerm(airdrop.airdropName);
     setFilteredAirdrops([airdrop]);
     setSuggestions([]);
   };
 
-  const handleAddToWatchlist = (airdrop) => {
-    if (!watchlist.some((item) => item.id === airdrop.id)) {
-      setWatchlist([...watchlist, airdrop]);
-    }
-    navigate("/watchlist");
-  };
-
   return (
     <PageContainer>
-      {/* Scrollable Airdrop Suggestions */}
       <SuggestionsWrapper>
-        {dummyData.slice(0, 4).map((airdrop) => (
+        {airdrops.slice(0, 4).map((airdrop) => (
           <SuggestionCard key={airdrop.id}>
-            <h3>{airdrop.AirdropName}</h3>
-            <p>{airdrop.Description}</p>
-            <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
+            <h3>{airdrop.airdropName}</h3>
+            <p>{airdrop.description}</p>
+            <AirdropLink href={airdrop.airdropWebsite} target="_blank">
               Join Airdrop
             </AirdropLink>
           </SuggestionCard>
@@ -468,7 +1311,7 @@ const Airdrop = ({ watchlist, setWatchlist }) => {
               key={airdrop.id}
               onClick={() => handleSuggestionClick(airdrop)}
             >
-              {airdrop.AirdropName}
+              {airdrop.airdropName}
             </SuggestionItem>
           ))}
         </SuggestionsList>
@@ -478,11 +1321,15 @@ const Airdrop = ({ watchlist, setWatchlist }) => {
         <ResultsContainer>
           {filteredAirdrops.map((airdrop) => (
             <ProjectDetails key={airdrop.id}>
-              <h3>{airdrop.AirdropName}</h3>
-              <p><strong>Description:</strong> {airdrop.Description}</p>
-              <p><strong>Status:</strong> {airdrop.AirdropStatus}</p>
+              <h3>{airdrop.airdropName}</h3>
+              <p>
+                <strong>Description:</strong> {airdrop.description}
+              </p>
+              <p>
+                <strong>Status:</strong> {airdrop.airdropstatus}
+              </p>
               <ActionsContainer>
-                <AirdropLink href={airdrop.AirdropWebsite} target="_blank">
+                <AirdropLink href={airdrop.airdropWebsite} target="_blank">
                   Join Airdrop
                 </AirdropLink>
                 <WatchlistButton onClick={() => handleAddToWatchlist(airdrop)}>
@@ -503,6 +1350,9 @@ const Airdrop = ({ watchlist, setWatchlist }) => {
 
 export default Airdrop;
 
+
+
+// Styled components
 const PageContainer = styled.div`
   height: 100vh;
   display: flex;
@@ -522,7 +1372,6 @@ const SuggestionsWrapper = styled.div`
   gap: 60px;
   margin-bottom: 20px;
   padding: 10px 0;
-  /* Removed overflow-x: scroll */
 `;
 
 const SuggestionCard = styled.div`
@@ -578,7 +1427,7 @@ const SearchInput = styled.input`
 `;
 
 const SearchButton = styled.button`
-   background-color: rgb(60, 50, 54);
+  background-color: rgb(60, 50, 54);
   color: white;
   border: 3px solid transparent;
   padding: 10px;
@@ -586,7 +1435,6 @@ const SearchButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-
   &:hover {
     transition-duration: 1s;
     color: black;

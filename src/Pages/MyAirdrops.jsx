@@ -435,7 +435,6 @@ const MyAirdrops = () => {
   const [airdropLink, setAirdropLink] = useState("");
   const [signupVia, setSignupVia] = useState("");
 
-  // Fetch data globally from the JSON server
   useEffect(() => {
     const fetchAirdrops = async () => {
       try {

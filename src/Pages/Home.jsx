@@ -389,8 +389,8 @@ const HeaderContent = styled.div`
 `;
 
 const Title = styled.h1`
-  margin-top: 100px;
-  margin-bottom: 163px;
+  margin-top: 80px;
+  margin-bottom: 60px;
   font-size: 3rem;
   color: #ffcc00;
 `;
@@ -429,7 +429,7 @@ const CoinImage = styled.img`
 
   &:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.8);
+    box-shadow: 2px 2px 20px 4px rgba(255, 255, 255, 0.8);
   }
 `;
 
