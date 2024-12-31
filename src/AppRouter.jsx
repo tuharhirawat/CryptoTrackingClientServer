@@ -167,7 +167,14 @@ const AppRouter = () => {
               )
             }
           />
-          <Route path="/coin/:coinId" element={<CoinDetails />} />
+          <Route path="/coin/:coinId" 
+           element={
+            isLoggedIn ? (
+              <CoinDetails setIsLoggedIn={setIsLoggedIn} />
+            ) : (
+              <Navigate to="/signup" replace />
+            )
+          } />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/signup" element={<Signup />} />
           <Route
