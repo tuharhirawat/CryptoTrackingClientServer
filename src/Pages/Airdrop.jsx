@@ -220,7 +220,7 @@ const Airdrop = ({ watchlist, setWatchlist }) => {
 
 export default Airdrop;
 
-// Styled components
+
 const PageContainer = styled.div`
   height: 100vh;
   display: flex;
@@ -362,3 +362,4 @@ const NoResults = styled.p`
   color: #777;
   font-size: 1.1rem;
 `;
+

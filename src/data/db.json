@@ -16,6 +16,16 @@
           "ReferralProgram": "True",
           "AirdropStatus": "Active",
           "Description": "Join the BlockMesh Network and receive free airdrop tokens. Participate by registering with your invite code, completing social media tasks, and referring friends to earn additional rewards."
+        },
+        {
+          "id": 6,
+          "AirdropName": "Skyblock Airdrop",
+          "TokenSymbol": "NaN",
+          "AirdropWebsite": "https://skyblock.io/register",
+          "SocialMediaRequirement": "True",
+          "ReferralProgram": "True",
+          "AirdropStatus": "Active",
+          "Description": "Join the Skyblock Airdrop and receive free tokens by completing simple social media tasks. Refer friends to increase your earnings."
         }
       ]
     },
@@ -24,40 +34,35 @@
       "name": "Jane Smith",
       "mobile": "9876543210",
       "email": "janesmith@example.com",
-      "password": "pass456",
-      "watchlist": []
+      "password": "pass456"
     },
     {
       "id": "3",
       "name": "Alice Johnson",
       "mobile": "5551234567",
       "email": "alice@example.com",
-      "password": "alicepass",
-      "watchlist": []
+      "password": "alicepass"
     },
     {
       "id": "dfdd",
       "name": "Tushar",
       "mobile": "6303733044",
       "email": "tushar@gmail.com",
-      "password": "11111111",
-      "watchlist": []
+      "password": "11111111"
     },
     {
       "id": "0efc",
       "name": "Tushar",
       "mobile": "6303733044",
       "email": "tushar@gmail.com",
-      "password": "11111111",
-      "watchlist": []
+      "password": "11111111"
     },
     {
       "id": "3ae8",
       "name": "Ramesh",
       "mobile": "9999999999",
       "email": "ramesh@gmail.com",
-      "password": "111111",
-      "watchlist": []
+      "password": "111111"
     }
   ],
   "contact": [
@@ -72,6 +77,18 @@
       "name": "Prabitha",
       "email": "pranitha@gmail.com",
       "message": "hello\n"
+    }
+  ],
+  "watchlist": [
+    {
+      "userId": "1",
+      "items": [
+        {
+          "id": "a1",
+          "AirdropName": "Airdrop 1",
+          "AirdropWebsite": "https://airdrop1.com"
+        }
+      ]
     }
   ]
 }
