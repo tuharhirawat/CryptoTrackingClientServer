@@ -96,6 +96,10 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+    background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
+  background-size: cover;
+  background-position: center;
+
 `;
 
 const HeaderWrapper = styled.header`
@@ -103,13 +107,13 @@ const HeaderWrapper = styled.header`
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: black;
+  // background: black;
   color: white;
   padding: 10px 0;
 `;
 
 const FooterWrapper = styled.footer`
-  background: black;
+  // background: black;
   color: white;
   padding: 0;
   margin-top: 0;
@@ -121,7 +125,7 @@ const MainContent = styled.main`
   padding: 0px;
   margin-top: 30px; /* Adjust based on header height */
   padding-bottom: 50px; /* Adjust for footer space */
-  background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
+  // background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

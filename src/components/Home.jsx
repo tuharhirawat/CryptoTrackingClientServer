@@ -221,7 +221,7 @@ const HomeContainer = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
-  background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
+?  background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

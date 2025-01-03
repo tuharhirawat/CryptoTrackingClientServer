@@ -148,11 +148,11 @@
 import React from "react";
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";  // Importing useNavigate
-import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';  // Importing social media icons
+import { FaFacebook, FaTwitter, FaLinkedin, FaTelegram, FaGithub } from 'react-icons/fa';  // Importing social media icons
 
 const Main = styled.footer`
-  background-color: #2c2c2c;
-  color: white;
+  // background-color: #2c2c2c;
+  // color: white;
   padding: 40px 20px;
   font-size: 14px;
   text-align: center;
@@ -226,7 +226,7 @@ const A = styled.a`
 
 const FooterSocial = styled.div`
   text-align: center;
-  margin-bottom:15px;
+  margin-bottom:1px;
 
   h3 {
     color: #fff;
@@ -254,6 +254,9 @@ const Icon = styled.a`
 
 const FootBtm = styled.div`
   font-size: 16px;
+  // background-color:black;
+  margin-top:20px;
+  padding:0;
 
   p {
     color: #bbb;
@@ -273,9 +276,9 @@ function Footer() {
     <Main>
       <FooterContainer>
         {/* Logo Section */}
-        <LogoSection>
+        {/* <LogoSection>
           <h3>Crypto Tracker</h3>
-        </LogoSection>
+        </LogoSection> */}
 
         {/* Quick Links Section */}
         <LinksSection>
@@ -295,6 +298,8 @@ function Footer() {
             <Icon href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebook /></Icon>
             <Icon href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></Icon>
             <Icon href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></Icon>
+            <Icon href="https://t.me/CRYPTOLOOTTERSS" target="_blank" rel="noopener noreferrer"><FaTelegram /></Icon>
+            <Icon href="https://github.com/tuharhirawat/CryptoTrackingClientServer.git" target="_blank" rel="noopener noreferrer"><FaGithub /></Icon>
           </IconWrapper>
         </FooterSocial>
       </FooterContainer>

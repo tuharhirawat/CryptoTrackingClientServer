@@ -148,7 +148,7 @@ const HeaderContainer = styled.header`
   left: 0;
   margin-bottom: 2cm;
   width: 100%;
-  background-color: #222;
+  // background-color: #222;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -162,6 +162,7 @@ const Logo = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
+  
 `;
 
 const HamburgerIcon = styled.div`
@@ -202,18 +203,27 @@ const Nav = styled.nav`
     display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
     padding: 20px 0;
   }
+
+
 `;
 
 const NavLink = styled.span`
   margin: 0 15px;
   text-decoration: none;
-  color: #fff;
+  // color: #fff;
   font-size: 1rem;
   cursor: pointer;
 
-  &:hover {
-    text-decoration: underline;
+  // &:hover {
+  //   // text-decoration: underline;
+  // }
+
+
+   &:hover {
+  // box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  transform: scale(1.25);  
   }
+
 
   @media (max-width: 768px) {
     margin: 10px 0;
