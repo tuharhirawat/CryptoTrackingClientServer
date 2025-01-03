@@ -77,6 +77,7 @@ const PageContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  margin-top: 60px;
 `;
 
 const Overlay = styled.div`

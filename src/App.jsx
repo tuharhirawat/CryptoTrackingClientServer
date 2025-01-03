@@ -19,7 +19,6 @@ import Airdrop from "./components/Airdrop"
 import MyAirdrops from "./components/MyAirdrops"
 
 const App = () => {
-  // Check the initial login state from localStorage
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     const storedLoggedIn = localStorage.getItem("isLoggedIn");
     return storedLoggedIn === "true"; // Ensure it's a boolean
@@ -36,7 +35,6 @@ const App = () => {
   });
 
   const handleLogout = () => {
-    // Update state and localStorage when logging out
     setIsLoggedIn(false);
     setCurrentUser(null);
     localStorage.removeItem("isLoggedIn");
@@ -71,7 +69,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/login"
-            element={<Login setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />}
+            element={<Login  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />}
           />
           <Route
             path="/dashboard"
@@ -97,7 +95,7 @@ const App = () => {
             path="/airdrop"
             element={
               isLoggedIn ? (
-                <Airdrop currentUser={currentUser} />
+                <Airdrop currentUser={currentUser}/>
               ) : (
                 <Navigate to="/login" />
               )
@@ -148,7 +146,7 @@ const App = () => {
 };
 
 const Main = styled.main`
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 200px);
 `;
 
 export default App;

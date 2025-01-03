@@ -53,6 +53,7 @@ const PageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 60px
 `;
 
 const AboutContainer = styled.div`

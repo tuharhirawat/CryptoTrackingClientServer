@@ -198,9 +198,6 @@ const Home = () => {
 
 export default Home;
 
-// Styled Components remain unchanged
-
-// Styled Components for Pagination
 const Pagination = styled.div`
   display: flex;
   justify-content: center;
@@ -234,8 +231,6 @@ const HomeContainer = styled.div`
   overflow: hidden;
   min-height: 100vh;
 `;
-
-// Other styled components remain unchanged
 
 const HeaderContent = styled.div`
   display: flex;

@@ -98,6 +98,388 @@
 
 
 
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import styled, { keyframes } from "styled-components";
+// import FormInput from "../Components/FormInput";
+
+// const Signup = () => {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     mobile: "",
+//     email: "",
+//     password: "",
+//     confirmPassword: "",
+//   });
+
+//   const [errors, setErrors] = useState({});
+//   const [formStatus, setFormStatus] = useState("");
+//   const [successMessage, setSuccessMessage] = useState("");
+//   const navigate = useNavigate();
+
+//   const validateInput = async (name, value) => {
+//     if (name === "password") {
+//       if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(value)) {
+//         return "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.";
+//       }
+//     }
+
+//     if (name === "confirmPassword") {
+//       if (value !== formData.password) {
+//         return "Passwords do not match.";
+//       }
+//     }
+
+//     if (["name", "email", "mobile"].includes(name)) {
+//       try {
+//         const response = await axios.get(`http://localhost:5232/api/Users`);
+//         const existingUser = response.data.find((user) => user[name] === value);
+//         if (existingUser) {
+//           return `${
+//             name === "name" ? "Username" : name === "email" ? "Email" : "Mobile number"
+//           } already exists.`;
+//         }
+//       } catch (err) {
+//         console.error("Validation error:", err);
+//         return "Unable to validate. Please try again.";
+//       }
+//     }
+
+//     return "";
+//   };
+
+//   const handleChange = async (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+
+//     const error = await validateInput(name, value);
+//     setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+//   };
+
+//   const validateForm = () => {
+//     let validationErrors = {};
+
+//     if (!formData.name) {
+//       validationErrors.name = "Name is required.";
+//     }
+
+//     if (!formData.mobile) {
+//       validationErrors.mobile = "Mobile number is required.";
+//     } else if (!/^\d{10}$/.test(formData.mobile)) {
+//       validationErrors.mobile = "Mobile number must be exactly 10 digits.";
+//     }    
+
+//     if (!formData.email) {
+//       validationErrors.email = "Email is required.";
+//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+//       validationErrors.email = "Invalid email format.";
+//     }
+
+//     if (!formData.password) {
+//       validationErrors.password = "Password is required.";
+//     } else if (
+//       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(formData.password)
+//     ) {
+//       validationErrors.password =
+//         "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.";
+//     }
+
+//     if (!formData.confirmPassword) {
+//       validationErrors.confirmPassword = "Confirm Password is required.";
+//     } else if (formData.confirmPassword !== formData.password) {
+//       validationErrors.confirmPassword = "Passwords do not match.";
+//     }
+
+//     setErrors(validationErrors);
+//     return Object.keys(validationErrors).length === 0;
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validateForm()) return;
+
+//     setFormStatus("loading");
+
+//     try {
+//       await axios.post("http://localhost:5232/api/Users", {
+//         username: formData.name,
+//         mobileNumber: formData.mobile,
+//         email: formData.email,
+//         password: formData.password,
+//       });
+
+//       setFormStatus("success");
+//       setSuccessMessage("Congratulations! You are ready to rock!");
+//       setTimeout(() => {
+//         navigate("/login");
+//       }, 3000); 
+//     } catch (err) {
+//       console.error("Signup error:", err);
+//       setFormStatus("error");
+//       setErrors({ general: "Something went wrong! Please try again later." });
+//     }
+//   };
+
+//   return (
+//     <PageContainer>
+//       <FormContainer onSubmit={handleSubmit}>
+//         {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+
+//         <h2>Sign Up</h2>
+
+//         {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
+
+//         <FormInput
+//           type="text"
+//           placeholder="Name"
+//           name="name"
+//           onChange={handleChange}
+//           value={formData.name}
+//         />
+//         {errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+
+//         <FormInput
+//           type="number"
+//           placeholder="Mobile Number"
+//           name="mobile"
+//           onChange={handleChange}
+//           value={formData.mobile}
+//         />
+//         {errors.mobile && <ErrorMessage>{errors.mobile}</ErrorMessage>}
+
+//         <FormInput
+//           type="email"
+//           placeholder="Email"
+//           name="email"
+//           onChange={handleChange}
+//           value={formData.email}
+//         />
+//         {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+
+//         <FormInput
+//           type="password"
+//           placeholder="Password"
+//           name="password"
+//           onChange={handleChange}
+//           value={formData.password}
+//         />
+//         {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+
+//         <FormInput
+//           type="password"
+//           placeholder="Confirm Password"
+//           name="confirmPassword"
+//           onChange={handleChange}
+//           value={formData.confirmPassword}
+//         />
+//         {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword}</ErrorMessage>}
+
+//         <SubmitButton type="submit" disabled={formStatus === "loading"}>
+//           {formStatus === "loading" ? "Signing Up..." : "Sign Up"}
+//         </SubmitButton>
+//       </FormContainer>
+//     </PageContainer>
+//   );
+// };
+
+// export default Signup;
+
+
+
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import styled, { keyframes } from "styled-components";
+// import FormInput from "../Components/FormInput";
+
+// const Signup = () => {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     mobile: "",
+//     email: "",
+//     password: "",
+//     confirmPassword: "",
+//   });
+
+//   const [errors, setErrors] = useState({});
+//   const [formStatus, setFormStatus] = useState("");
+//   const [successMessage, setSuccessMessage] = useState("");
+//   const navigate = useNavigate();
+
+//   const validateInput = async (name, value) => {
+//     if (name === "password") {
+//       if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(value)) {
+//         return "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.";
+//       }
+//     }
+
+//     if (name === "confirmPassword") {
+//       if (value !== formData.password) {
+//         return "Passwords do not match.";
+//       }
+//     }
+
+//     if (["name", "email", "mobile"].includes(name)) {
+//       try {
+//         const response = await axios.get(`http://localhost:5232/api/Users`);
+//         const existingUser = response.data.find((user) => user[name] === value);
+//         if (existingUser) {
+//           return `${
+//             name === "name" ? "Username" : name === "email" ? "Email" : "Mobile number"
+//           } already exists.`;
+//         }
+//       } catch (err) {
+//         console.error("Validation error:", err);
+//         return "Unable to validate. Please try again.";
+//       }
+//     }
+
+//     return "";
+//   };
+
+//   const handleChange = async (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+
+//     const error = await validateInput(name, value);
+//     setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+//   };
+
+//   const validateForm = () => {
+//     let validationErrors = {};
+
+//     if (!formData.name) {
+//       validationErrors.name = "Name is required.";
+//     }
+
+//     if (!formData.mobile) {
+//       validationErrors.mobile = "Mobile number is required.";
+//     } else if (!/^\d{10}$/.test(formData.mobile)) {
+//       validationErrors.mobile = "Mobile number must be exactly 10 digits.";
+//     }    
+
+//     if (!formData.email) {
+//       validationErrors.email = "Email is required.";
+//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+//       validationErrors.email = "Invalid email format.";
+//     }
+
+//     if (!formData.password) {
+//       validationErrors.password = "Password is required.";
+//     }
+
+//     if (!formData.confirmPassword) {
+//       validationErrors.confirmPassword = "Confirm Password is required.";
+//     }
+
+//     setErrors(validationErrors);
+//     return Object.keys(validationErrors).length === 0;
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validateForm()) return;
+
+//     setFormStatus("loading");
+
+//     try {
+//       await axios.post("http://localhost:5232/api/Users", {
+//         username: formData.name,
+//         mobileNumber: formData.mobile,
+//         email: formData.email,
+//         password: formData.password,
+//       });
+
+//       setFormStatus("success");
+//       setSuccessMessage("Congratulations! You are ready to rock!");
+//       setTimeout(() => {
+//         navigate("/login");
+//       }, 3000); 
+//     } catch (err) {
+//       console.error("Signup error:", err);
+//       setFormStatus("error");
+//       setErrors({ general: "Something went wrong! Please try again later." });
+//     }
+//   };
+
+//   return (
+//     <PageContainer>
+//       <FormContainer onSubmit={handleSubmit}>
+//         {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+//         <h2>Sign Up</h2>
+//         {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
+
+//         <FormInput
+//           type="text"
+//           placeholder="Name"
+//           name="name"
+//           onChange={handleChange}
+//           value={formData.name}
+//         />
+//         {errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+
+//         <FormInput
+//           type="number"
+//           placeholder="Mobile Number"
+//           name="mobile"
+//           onChange={handleChange}
+//           value={formData.mobile}
+//         />
+//         {errors.mobile && <ErrorMessage>{errors.mobile}</ErrorMessage>}
+
+//         <FormInput
+//           type="email"
+//           placeholder="Email"
+//           name="email"
+//           onChange={handleChange}
+//           value={formData.email}
+//         />
+//         {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+
+//         <FormInput
+//           type="password"
+//           placeholder="Password"
+//           name="password"
+//           onChange={handleChange}
+//           value={formData.password}
+//         />
+//         {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
+
+//         <FormInput
+//           type="password"
+//           placeholder="Confirm Password"
+//           name="confirmPassword"
+//           onChange={handleChange}
+//           value={formData.confirmPassword}
+//         />
+//         {errors.confirmPassword && <ErrorMessage>{errors.confirmPassword}</ErrorMessage>}
+
+//         <SubmitButton type="submit" disabled={formStatus === "loading"}>
+//           {formStatus === "loading" ? "Signing Up..." : "Sign Up"}
+//         </SubmitButton>
+//       </FormContainer>
+//     </PageContainer>
+//   );
+// };
+
+// export default Signup;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -118,27 +500,36 @@ const Signup = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
+  // Validate each input field
   const validateInput = async (name, value) => {
+    // Password validation
     if (name === "password") {
       if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(value)) {
         return "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.";
       }
     }
 
+    // Confirm password validation
     if (name === "confirmPassword") {
       if (value !== formData.password) {
         return "Passwords do not match.";
       }
     }
 
+    // Check for existing data in the database for name, email, and mobile
     if (["name", "email", "mobile"].includes(name)) {
       try {
-        const response = await axios.get(`http://localhost:5232/api/Users`);
+        const response = await axios.get("http://localhost:5232/api/Users");
         const existingUser = response.data.find((user) => user[name] === value);
+
         if (existingUser) {
-          return `$${
-            name === "name" ? "Username" : name === "email" ? "Email" : "Mobile number"
-          } already exists.`;
+          if (name === "name") {
+            return "Username already exists.";
+          } else if (name === "email") {
+            return "Email already exists.";
+          } else if (name === "mobile") {
+            return "Mobile number already exists.";
+          }
         }
       } catch (err) {
         console.error("Validation error:", err);
@@ -146,15 +537,23 @@ const Signup = () => {
       }
     }
 
-    return "";
+    return ""; // No error
   };
 
   const handleChange = async (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
+    // Reset the error state for this field
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+
+    // Validate input
     const error = await validateInput(name, value);
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    
+    // If the input fails validation, set the error for the corresponding field
+    if (error) {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    }
   };
 
   const validateForm = () => {
@@ -168,7 +567,7 @@ const Signup = () => {
       validationErrors.mobile = "Mobile number is required.";
     } else if (!/^\d{10}$/.test(formData.mobile)) {
       validationErrors.mobile = "Mobile number must be exactly 10 digits.";
-    }    
+    }
 
     if (!formData.email) {
       validationErrors.email = "Email is required.";
@@ -178,17 +577,10 @@ const Signup = () => {
 
     if (!formData.password) {
       validationErrors.password = "Password is required.";
-    } else if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/.test(formData.password)
-    ) {
-      validationErrors.password =
-        "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.";
     }
 
     if (!formData.confirmPassword) {
       validationErrors.confirmPassword = "Confirm Password is required.";
-    } else if (formData.confirmPassword !== formData.password) {
-      validationErrors.confirmPassword = "Passwords do not match.";
     }
 
     setErrors(validationErrors);
@@ -225,9 +617,7 @@ const Signup = () => {
     <PageContainer>
       <FormContainer onSubmit={handleSubmit}>
         {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
-
         <h2>Sign Up</h2>
-
         {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
 
         <FormInput

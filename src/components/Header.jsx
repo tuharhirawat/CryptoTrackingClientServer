@@ -127,7 +127,7 @@ const Header = ({ isLoggedIn, handleLogout }) => {
             <NavLink onClick={() => navigate("/myairdrops")}>My-Airdrops</NavLink>
             <NavLink onClick={() => navigate("/airdrop")}>Airdrop</NavLink>
             <NavLink onClick={() => navigate("/watchlist")}>WishList</NavLink>
-            <NavLink onClick={() => navigate("/profile")}>Profile</NavLink>
+            <NavLink onClick={() => navigate("/dashboard")}>Profile</NavLink>
             <NavLink onClick={() => navigate("/pricing")}>Pricing</NavLink>
             <Button onClick={handleLogout}>Logout</Button>
           </>

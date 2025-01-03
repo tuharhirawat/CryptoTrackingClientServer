@@ -156,6 +156,7 @@ const Main = styled.footer`
   padding: 40px 20px;
   font-size: 14px;
   text-align: center;
+  z-index: 
 
   @media (max-width: 768px) {
     padding: 30px 20px;
