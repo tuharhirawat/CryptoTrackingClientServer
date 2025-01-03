@@ -25,5 +25,34 @@
       "email": "ramesh@gmail.com",
       "password": "Ramesh@123"
     }
+  ],
+  "myairdrops": [
+    {
+      "id": "f84a",
+      "airdropName": "dbcbsj",
+      "airdropLink": "sdf kd",
+      "referCode": "sdnclks",
+      "airdropType": "Token",
+      "connectedVia": "sdjfahca",
+      "currentUser": "jane.smith@example.com"
+    },
+    {
+      "id": "691f",
+      "airdropName": "jsbacksdnjs",
+      "airdropLink": "sdfkd",
+      "referCode": "",
+      "airdropType": "Token",
+      "connectedVia": "sdfdss",
+      "currentUser": "jane.smith@example.com"
+    },
+    {
+      "id": "3add",
+      "airdropName": "jsdjsgv",
+      "airdropLink": "hsegfedvakhvhscjysg rcsjrgshskrgsjr gjsgrjae gfrueasgfjesgvhsvskfcvajva",
+      "referCode": "dfvdgbng",
+      "airdropType": "NFT",
+      "connectedVia": "kdfnvsn",
+      "currentUser": "jane.smith@example.com"
+    }
   ]
 }
