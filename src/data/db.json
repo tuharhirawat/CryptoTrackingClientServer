@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": "3e56",
+      "name": "Tushar",
+      "email": "tusharhirawat1918@gmail.com",
+      "password": "Tushar@123"
+    },
+    {
+      "id": "9f95",
+      "name": "tushar",
+      "email": "tushar@gmail.com",
+      "password": "11111111"
+    },
+    {
+      "id": "8496",
+      "name": "tuhhh",
+      "email": "Tush@gmail.com",
+      "password": "111111"
+    },
+    {
+      "id": "1168",
+      "username": "Ramesh",
+      "mobileNumber": "9999999999",
+      "email": "ramesh@gmail.com",
+      "password": "Ramesh@123"
+    }
+  ]
+}
