@@ -67,7 +67,13 @@ const App = () => {
           <Routes>
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
-            <Route path="/dashboard" element={isLoggedIn ? <Dashboard currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
+            <Route 
+              path="/dashboard" 
+              element={
+              isLoggedIn ? (<Dashboard setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} handleLogout={handleLogout} />) 
+              : (<Navigate to="/login" />)} 
+            />
+
             <Route path="/watchlist" element={isLoggedIn ? <WishList currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
             <Route path="/airdrop" element={isLoggedIn ? <Airdrop currentUser={currentUser} /> : <Navigate to="/login" />} />
             <Route path="/myairdrops" element={isLoggedIn ? <MyAirdrops currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />

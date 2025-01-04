@@ -173,18 +173,18 @@ const FooterContainer = styled.div`
   gap: 40px;
 `;
 
-const LogoSection = styled.div`
-  text-align: center;
-    margin-bottom:0;
+// const LogoSection = styled.div`
+//   text-align: center;
+//     margin-bottom:0;
 
 
-  h3 {
-    color: #fff;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-`;
+//   h3 {
+//     color: #fff;
+//     font-size: 28px;
+//     font-weight: bold;
+//     margin-bottom: 20px;
+//   }
+// `;
 
 const LinksSection = styled.div`
   text-align: center;

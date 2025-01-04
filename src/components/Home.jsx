@@ -320,7 +320,7 @@ const TrendingCoinsTable = styled.table`
 
   th,
   td {
-    padding: 12px 15px;
+    // padding: 12px 15px;
     text-align: center;
   }
 
@@ -331,7 +331,7 @@ const TrendingCoinsTable = styled.table`
   }
 
   td {
-    background-color: rgba(68, 68, 68, 0.8);
+    // background-color: rgba(68, 68, 68, 0.8);
   }
 
   button {
