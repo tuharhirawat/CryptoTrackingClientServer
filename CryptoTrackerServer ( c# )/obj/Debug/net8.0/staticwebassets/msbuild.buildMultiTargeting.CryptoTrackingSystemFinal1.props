@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CryptoTrackingSystemFinal1.props" />
+</Project>
