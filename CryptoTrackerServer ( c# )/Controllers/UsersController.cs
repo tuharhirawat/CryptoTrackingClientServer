@@ -104,7 +104,7 @@ namespace CryptoTrackingSystemFinal1.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser(User user)
         {
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            // user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
             var createdUser = await _userRepository.AddUserAsync(user);
             return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);

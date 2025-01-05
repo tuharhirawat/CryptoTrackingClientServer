@@ -171,21 +171,99 @@
 
 
 
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+// import styled, { keyframes } from "styled-components";
+// import { useNavigate } from "react-router-dom";
+
+// const Login = ({ setIsLoggedIn, setCurrentUser }) => {
+//   const [formData, setFormData] = useState({ email: "", password: "" });
+//   const [error, setError] = useState("");
+//   const navigate = useNavigate();
+
+//   // Check if the user is already logged in
+//   useEffect(() => {
+//     const isLoggedIn = localStorage.getItem("isLoggedIn");
+//     if (isLoggedIn) {
+//       navigate("/news"); // Redirect to news page if the user is already logged in
+//     }
+//   }, [navigate]);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const response = await axios.get("http://localhost:5232/api/Users");
+//       const user = response.data.find(
+//         (u) => u.email === formData.email && u.password === formData.password
+//       );
+
+//       if (user) {
+//         setIsLoggedIn(true);
+//         setCurrentUser(user);
+//         localStorage.setItem("isLoggedIn", true);
+//         localStorage.setItem("currentUser", JSON.stringify(user));
+//         navigate("/dashboard"); 
+//       } else {
+//         setError("Invalid email or password.");
+//       }
+//     } catch (error) {
+//       setError("Error during login. Please try again.");
+//     }
+//   };
+
+//   return (
+//     <PageContainer>
+//       <FormContainer onSubmit={handleSubmit}>
+//         <h2>Login</h2>
+//         <Input
+//           type="email"
+//           placeholder="Email"
+//           value={formData.email}
+//           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+//         />
+//         <Input
+//           type="password"
+//           placeholder="Password"
+//           value={formData.password}
+//           onChange={(e) =>
+//             setFormData({ ...formData, password: e.target.value })
+//           }
+//         />
+//         {error && <ErrorText>{error}</ErrorText>}
+//         <SubmitButton type="submit">Login</SubmitButton>
+//       </FormContainer>
+//     </PageContainer>
+//   );
+// };
+
+// export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
+// import bcrypt from "bcryptjs";
 
 const Login = ({ setIsLoggedIn, setCurrentUser }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Check if the user is already logged in
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     if (isLoggedIn) {
-      navigate("/news"); // Redirect to news page if the user is already logged in
+      navigate("/news");
     }
   }, [navigate]);
 
@@ -193,16 +271,14 @@ const Login = ({ setIsLoggedIn, setCurrentUser }) => {
     e.preventDefault();
     try {
       const response = await axios.get("http://localhost:5232/api/Users");
-      const user = response.data.find(
-        (u) => u.email === formData.email && u.password === formData.password
-      );
+      const user = response.data.find((u) => u.email === formData.email);
 
-      if (user) {
+      if (user ) {
         setIsLoggedIn(true);
         setCurrentUser(user);
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("currentUser", JSON.stringify(user));
-        navigate("/news"); // Navigate to the news page after successful login
+        navigate("/dashboard");
       } else {
         setError("Invalid email or password.");
       }
@@ -238,7 +314,6 @@ const Login = ({ setIsLoggedIn, setCurrentUser }) => {
 
 export default Login;
 
-
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -250,7 +325,6 @@ const fadeIn = keyframes`
   }
 `;
 
-// Styled Components
 const PageContainer = styled.div`
   display: flex;
   justify-content: center;
