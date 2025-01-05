@@ -394,7 +394,7 @@ const Dashboard = ({ setIsLoggedIn, currentUser }) => {
 export default Dashboard;
 
 const Background = styled.div`
-  background: linear-gradient(120deg, #333, #555);
+  // background: linear-gradient(120deg, #333, #555);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -406,7 +406,7 @@ const ProfileContainer = styled.div`
   width: 90%;
   max-width: 600px;
   padding: 20px;
-  background-color: #444;
+  // background-color: #444;
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   text-align: center;
