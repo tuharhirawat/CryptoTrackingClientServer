@@ -2,12 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const PriPolContainer = styled.div`
-  background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
+  margin-top:20px;
   align-items: center;
   justify-content: center;
   padding: 20px; /* Added padding to prevent content from sticking to the edges */

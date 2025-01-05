@@ -45,10 +45,6 @@ const About = () => {
 export default About;
 
 const PageWrapper = styled.div`
-  background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -60,6 +56,8 @@ const AboutContainer = styled.div`
   font-family: Arial, sans-serif;
   padding: 20px;
   max-width: 800px;
+  margin-top:50px;
+  margin-left:20px;
   text-align: center;
   background-color: rgba(42, 42, 46, 0.5); 
   border-radius: 10px;

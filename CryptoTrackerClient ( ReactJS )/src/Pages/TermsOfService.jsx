@@ -2,11 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const TermsContainer = styled.div`
-  background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 100vh;
+  margin-top:40px;
   display: flex;
   align-items: center;
   justify-content: center;
