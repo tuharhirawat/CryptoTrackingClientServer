@@ -1841,17 +1841,17 @@ const WishlistButton = styled.button`
   }
 `;
 
-const Footer = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 14px;
-`;
+// const Footer = styled.footer`
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   background-color: #333;
+//   color: white;
+//   text-align: center;
+//   padding: 10px;
+//   font-size: 14px;
+// `;
 
 const Airdrop = () => {
   const [airdrops, setAirdrops] = useState([]);
@@ -1890,12 +1890,6 @@ const Airdrop = () => {
     const storedUserData = JSON.parse(localStorage.getItem("currentUser"));
     const storedUserId = storedUserData ? storedUserData.id : null;
 
-    // Check if user data is available
-    if (!storedUserId) {
-      alert("You need to log in to add airdrops to your watchlist.");
-      navigate("/login");
-      return;
-    }
 
     // Check for duplication using `airdropWebsite`
     const alreadyInWatchlist = watchlist.some(
@@ -1972,9 +1966,9 @@ const Airdrop = () => {
           </AirdropCard>
         ))}
       </AirdropList>
-      <Footer>
+      {/* <Footer>
         <p>&copy; 2025 Airdrop Service</p>
-      </Footer>
+      </Footer> */}
     </AirdropContainer>
   );
 };

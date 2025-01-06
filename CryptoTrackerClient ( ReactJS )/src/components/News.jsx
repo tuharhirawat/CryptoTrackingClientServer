@@ -77,7 +77,7 @@ const PageContainer = styled.div`
 `;
 
 const Overlay = styled.div`
-  background-color: rgba(0, 0, 0, 0.6);
+  // background-color: rgba(0, 0, 0, 0.6);
   flex: 1;
   display: flex;
   flex-direction: column;

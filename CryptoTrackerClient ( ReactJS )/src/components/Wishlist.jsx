@@ -370,14 +370,14 @@ const PageContainer = styled.div`
   padding: 20px;
   font-family: Arial, sans-serif;
   color: white;
-  margin-top:50px;
+  margin-top:80px;
 `;
 
 const WatchlistContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-top:100px;
+  margin-top:50px;
   width: 80%;
   max-width: 800px;
 `;

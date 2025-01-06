@@ -485,7 +485,6 @@ const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  // background-color: #222;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -547,7 +546,7 @@ const NavLink = styled.span`
   margin: 20px 0;
   text-decoration: none;
   color: #fff;
-  margin-right:10px;
+  margin-right:25px;
   font-size: 1rem;
   cursor: pointer;
   padding-left: 20px;
