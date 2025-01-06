@@ -428,20 +428,17 @@ const Header = ({ isLoggedIn, handleLogout }) => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Toggle the sidebar menu open/close
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Close the menu when the close button is clicked
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
-  // Handle navigation and close the sidebar
   const handleNavigation = (path) => {
     navigate(path);
-    setIsMenuOpen(false); // Close the menu after navigation
+    setIsMenuOpen(false); 
   };
 
   return (
@@ -455,7 +452,6 @@ const Header = ({ isLoggedIn, handleLogout }) => {
         <div></div>
       </HamburgerIcon>
       <Nav isMenuOpen={isMenuOpen}>
-        {/* Close Button */}
         {isMenuOpen && (
           <CloseButton onClick={closeMenu}>
             <span>&#10005;</span>
@@ -484,7 +480,6 @@ const Header = ({ isLoggedIn, handleLogout }) => {
   );
 };
 
-// Styled Components
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
@@ -514,6 +509,7 @@ const HamburgerIcon = styled.div`
   width: 30px;
   height: 25px;
   cursor: pointer;
+  
   div {
     width: 25px;
     height: 4px;
@@ -551,6 +547,7 @@ const NavLink = styled.span`
   margin: 20px 0;
   text-decoration: none;
   color: #fff;
+  margin-right:10px;
   font-size: 1rem;
   cursor: pointer;
   padding-left: 20px;

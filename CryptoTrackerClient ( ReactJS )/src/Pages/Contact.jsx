@@ -300,13 +300,9 @@ const Contact = () => {
 
 export default Contact;
 
-// Styled-components
 
 const Background = styled.div`
-  // background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
-  // background-size: cover;
-  // background-position: center;
-  // background-repeat: no-repeat;
+  margin-top:40px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -316,6 +312,7 @@ const Background = styled.div`
 const ContactContainer = styled.div`
   width: 600px;  /* fixed width */
   padding: 20px;
+  margin-top:60px;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -333,6 +330,7 @@ const ContactContainer = styled.div`
 
 const Form = styled.form`
   display: flex;
+  margin-top:50px;
   flex-direction: column;
 `;
 
@@ -341,12 +339,12 @@ const Input = styled.input`
   margin: 10px 0;
   border-radius: 4px;
   border: 1px solid #ccc;
+  color:green;
 
   &:hover {
     border: 2px solid transparent;
     border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
     border-image-slice: 1;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -354,6 +352,7 @@ const TextArea = styled.textarea`
   padding: 10px;
   margin: 10px 0;
   border-radius: 4px;
+  color:green;
   border: 1px solid #ccc;
   height: 150px;
 
