@@ -1783,12 +1783,12 @@ const AirdropCard = styled.div`
   border-radius: 10px;
   width: 250px;
   background-color: #222;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
   flex-shrink: 0;
   margin-bottom: 20px;
 
   &:hover {
+  border: 4px solid;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     transform: scale(1.05);
     transition: all 0.3s ease;

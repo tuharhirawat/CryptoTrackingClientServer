@@ -35,60 +35,55 @@ import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 
 const Home = () => {
-  const [coins, setCoins] = useState([]); // Coins to be displayed
-  const [loading, setLoading] = useState(true); // Loading state to show a loading message
-  const [currency, setCurrency] = useState("usd"); // Default currency (USD)
-  const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
-  const coinsPerPage = 10; // Number of coins to show per page
+  const [coins, setCoins] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [currency, setCurrency] = useState("usd"); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const coinsPerPage = 10; 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCoins = async () => {
-      setLoading(true); // Set loading to true when fetching data
+      setLoading(true); 
       try {
         const response = await axios.get(
           "https://api.coingecko.com/api/v3/coins/markets",
           {
             params: {
-              vs_currency: currency, // Use the selected currency here
+              vs_currency: currency, 
               order: "market_cap_desc",
-              per_page: 30, // Fetch 30 coins for trending table
+              per_page: 30, 
               page: 1,
             },
           }
         );
-        setCoins(response.data); // Update coins state with fetched data
+        setCoins(response.data); 
       } catch (error) {
         console.error("Error fetching coins:", error);
       } finally {
-        setLoading(false); // Set loading to false once data is fetched
+        setLoading(false); 
       }
     };
 
     fetchCoins();
-  }, [currency]); // Re-fetch when the currency changes
+  }, [currency]); 
 
-  // Handle coin click
   const handleCoinClick = (coinId) => {
-    navigate(`/coin/${coinId}`); // Navigate to the coin details page
+    navigate(`/coin/${coinId}`);
   };
 
-  // Handle currency change
   const handleCurrencyChange = (event) => {
-    setCurrency(event.target.value); // Set the selected currency
+    setCurrency(event.target.value);
   };
 
-  // Pagination logic
   const indexOfLastCoin = currentPage * coinsPerPage;
   const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
   const currentCoins = coins.slice(indexOfFirstCoin, indexOfLastCoin);
 
-  // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Function to get the currency symbol
   const getCurrencySymbol = (currency) => {
     switch (currency) {
       case "usd":
@@ -149,7 +144,7 @@ const Home = () => {
             <th>Coin</th>
             <th>Price Change (24h)</th>
             <th>Market Cap</th>
-            <th>Action</th>
+            {/* <th>Action</th> */}
           </tr>
         </thead>
         <tbody>
@@ -169,9 +164,9 @@ const Home = () => {
               <td>
                 {getCurrencySymbol(currency)}{coin.market_cap.toLocaleString()}
               </td>
-              <td>
+              {/* <td>
                 <button onClick={() => handleCoinClick(coin.id)}>View Details</button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
@@ -221,10 +216,7 @@ const HomeContainer = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
-?  background-image: url('https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -320,7 +312,7 @@ const TrendingCoinsTable = styled.table`
 
   th,
   td {
-    // padding: 12px 15px;
+    padding: 12px 15px;
     text-align: center;
   }
 

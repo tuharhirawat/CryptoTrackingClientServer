@@ -250,13 +250,13 @@
 
 const CoinDescription = styled.p`
   font-size: 14px;
-  color: #333;
+  color: white;
   margin-bottom: 10px;
 `;
 
 const CoinPrice = styled.p`
   font-size: 16px;
-  color: #666;
+  color: white;
 `;
 
 // const ExploreMoreButton = styled.button`
@@ -416,6 +416,7 @@ const PricingContainer = styled.div`
 const Title = styled.h1`
   text-align: center;
   color: gold;
+  margin-top:60px;
 `;
 
 const SearchContainer = styled.div`
@@ -443,6 +444,7 @@ const CoinsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
+
 `;
 
 const CoinItem = styled.div`
@@ -450,6 +452,15 @@ const CoinItem = styled.div`
   background: #1e1e1e;
   border-radius: 10px;
   text-align: center;
+
+  
+   &:hover {
+    border: 4px solid;
+    // border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
+    border-image-slice: 1;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transform: scale(1.05);  
+  }
 `;
 
 const CoinLogo = styled.img`
@@ -462,8 +473,9 @@ const ExploreMoreButton = styled.button`
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  
   &:hover {
-    background: darkgoldenrod;
+    background: gold;
   }
 `;
 
@@ -471,7 +483,7 @@ const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 40px;
 `;
 
 const PaginationButton = styled.button`
@@ -493,11 +505,13 @@ const LoadingContainer = styled.div`
   text-align: center;
   font-size: 20px;
   color: white;
+  margin-top:250px;
 `;
 
 const ErrorContainer = styled.div`
   color: red;
   text-align: center;
+  margin-top:250px;
 `;
 
 const NoResults = styled.div`

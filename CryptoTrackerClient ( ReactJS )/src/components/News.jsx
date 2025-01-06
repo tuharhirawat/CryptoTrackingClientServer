@@ -66,17 +66,13 @@ const News = () => {
 
 export default News;
 
-const BACKGROUND_IMAGE_URL = 'https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true';
+// const BACKGROUND_IMAGE_URL = 'https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true';
 
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  background-image: url(${BACKGROUND_IMAGE_URL});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   margin-top: 60px;
 `;
 

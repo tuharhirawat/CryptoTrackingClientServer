@@ -178,20 +178,17 @@ const CoinDetails = () => {
 
 export default CoinDetails;
 
-// Styled Components
 const CoinDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-image: url("https://github.com/piyush-eon/react-crypto-tracker/blob/master/public/banner2.jpg?raw=true");
-  background-size: cover;
-  background-position: center;
   color: white;
 `;
 
 const CoinImage = styled.img`
   width: 150px;
+  margin-top:150px;
   height: 150px;
   margin-bottom: 20px;
 `;
