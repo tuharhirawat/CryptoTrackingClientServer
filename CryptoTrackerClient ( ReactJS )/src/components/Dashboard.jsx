@@ -402,15 +402,101 @@ const Background = styled.div`
   color: #fff;
 `;
 
+// const ProfileContainer = styled.div`
+//   width: 90%;
+//   max-width: 600px;
+//   padding: 20px;
+//   // background-color: #444;
+//   border-radius: 10px;
+//   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+//   text-align: center;
+// `;
+
 const ProfileContainer = styled.div`
-  width: 90%;
-  max-width: 600px;
+  position: relative;
+  background: linear-gradient(45deg, #ff6347, #32cd32, #8a2be2, #ff6347);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
   padding: 20px;
-  // background-color: #444;
   border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 215, 0, 0.2);
+    z-index: -1;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.8);
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
 `;
+
+
+
+// const ProfileContainer = styled.div`
+//   width: 90%;
+//   max-width: 600px;
+//   padding: 20px;
+//   border-radius: 10px;
+//   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+//   text-align: center;
+  // animation: jiggle 1s ease-in-out infinite;
+
+  // Keyframes for the jiggle effect
+  // @keyframes jiggle {
+  //   0% {
+  //     transform: rotate(0deg);
+  //   }
+  //   25% {
+  //     transform: rotate(5deg);
+  //   }
+  //   50% {
+  //     transform: rotate(-5deg);
+  //   }
+  //   75% {
+  //     transform: rotate(5deg);
+  //   }
+  //   100% {
+  //     transform: rotate(0deg);
+  //   }
+  // }
+
+//`;
 
 const ProfileDetails = styled.div`
   margin: 20px 0;

@@ -1,34 +1,3 @@
-// import React from "react";
-// import styled from "styled-components";
-
-// const Home = ({ currentUser }) => {
-//   return (
-//     <HomeContainer>
-//       <h1>Welcome to the Home Page!</h1>
-//       {currentUser && <p>Hello, {currentUser.name}!</p>}
-//     </HomeContainer>
-//   );
-// };
-
-// const HomeContainer = styled.div`
-//   text-align: center;
-//   padding: 2rem;
-// `;
-
-// export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
@@ -174,7 +143,7 @@ const Home = () => {
 
       {/* Pagination Controls */}
       <Pagination>
-        {[1, 2, 3].map((page) => (
+        {[1,2,3].map((page) => (
           <PageButton
             key={page}
             onClick={() => handlePageChange(page)}

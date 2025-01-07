@@ -298,19 +298,28 @@ const CoinPrice = styled.p`
 
 
 
+
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
 const Pricing = () => {
-  const [coins, setCoins] = useState([]);
+  const [coins, setCoins] = useState([]); // All fetched coins
+  const [filteredCoins, setFilteredCoins] = useState([]); // Coins after search filtering
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [currency, setCurrency] = useState("usd");
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [searchQuery, setSearchQuery] = useState(""); // Search input state
+  const [currency, setCurrency] = useState("usd"); // Currency selector state
+  const [page, setPage] = useState(1); // Current page
+  const [totalPages, setTotalPages] = useState(1); // Total pages based on coins count
+  const [coinsPerPage] = useState(20); // Number of coins to display per page
 
   const fetchCoinsData = async () => {
     setLoading(true);
@@ -322,13 +331,14 @@ const Pricing = () => {
           params: {
             vs_currency: currency,
             order: "market_cap_desc",
-            per_page: 20,
-            page: page,
+            per_page: 200, 
+            page: 1, 
           },
         }
       );
       setCoins(response.data);
-      setTotalPages(10); 
+      setFilteredCoins(response.data);
+      setTotalPages(Math.ceil(response.data.length / coinsPerPage)); 
     } catch (err) {
       setError("Failed to fetch coin data. Please try again later.");
     } finally {
@@ -338,19 +348,31 @@ const Pricing = () => {
 
   useEffect(() => {
     fetchCoinsData();
-  }, [currency, page]);
+  }, [currency]); 
 
-  const handleCurrencyChange = (e) => setCurrency(e.target.value);
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    const filtered = coins.filter(
+      (coin) =>
+        coin.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        coin.symbol.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredCoins(filtered);
+    setPage(1); 
+  };
 
-  const handleSearch = (e) => setSearchQuery(e.target.value);
+  const handleCurrencyChange = (e) => {
+    setCurrency(e.target.value);
+  };
 
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const indexOfLastCoin = page * coinsPerPage;
+  const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
+  const coinsToDisplay = filteredCoins.slice(indexOfFirstCoin, indexOfLastCoin);
 
   const nextPage = () => setPage((prev) => Math.min(prev + 1, totalPages));
-
   const prevPage = () => setPage((prev) => Math.max(prev - 1, 1));
+
+  const shouldShowPagination = searchQuery.length <= 1;
 
   if (loading) return <LoadingContainer>Loading...</LoadingContainer>;
   if (error) return <ErrorContainer>{error}</ErrorContainer>;
@@ -374,7 +396,7 @@ const Pricing = () => {
       </SearchContainer>
 
       <CoinsContainer>
-        {filteredCoins.map((coin) => (
+        {coinsToDisplay.map((coin) => (
           <CoinItem key={coin.id}>
             <CoinLogo src={coin.image} alt={coin.name} />
             <CoinDescription>
@@ -391,11 +413,13 @@ const Pricing = () => {
         ))}
       </CoinsContainer>
 
-      <PaginationContainer>
-        <PaginationButton onClick={prevPage} disabled={page === 1}>Previous</PaginationButton>
-        <PageIndicator>Page {page} of {totalPages}</PageIndicator>
-        <PaginationButton onClick={nextPage} disabled={page === totalPages}>Next</PaginationButton>
-      </PaginationContainer>
+      {shouldShowPagination && (
+        <PaginationContainer>
+          <PaginationButton onClick={prevPage} disabled={page === 1}>Previous</PaginationButton>
+          <PageIndicator>Page {page} of {totalPages}</PageIndicator>
+          <PaginationButton onClick={nextPage} disabled={page === totalPages}>Next</PaginationButton>
+        </PaginationContainer>
+      )}
 
       {filteredCoins.length === 0 && (
         <NoResults>No coins found for "{searchQuery}"</NoResults>
@@ -406,8 +430,9 @@ const Pricing = () => {
 
 export default Pricing;
 
+// Styled components
+
 const PricingContainer = styled.div`
-  // background-color: #121212;
   color: white;
   padding: 20px;
   min-height: 100vh;
@@ -416,7 +441,7 @@ const PricingContainer = styled.div`
 const Title = styled.h1`
   text-align: center;
   color: gold;
-  margin-top:60px;
+  margin-top: 100px;
 `;
 
 const SearchContainer = styled.div`
@@ -424,7 +449,7 @@ const SearchContainer = styled.div`
   justify-content: center;
   margin-bottom: 40px;
   gap: 10px;
-  width:100%;
+  width: 100%;
 `;
 
 const SearchInput = styled.input`
@@ -444,7 +469,6 @@ const CoinsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
-
 `;
 
 const CoinItem = styled.div`
@@ -452,14 +476,11 @@ const CoinItem = styled.div`
   background: #1e1e1e;
   border-radius: 10px;
   text-align: center;
-
-  
-   &:hover {
+  &:hover {
     border: 4px solid;
-    // border-image: linear-gradient(45deg, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff66cc);
     border-image-slice: 1;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-    transform: scale(1.05);  
+    transform: scale(1.05);
   }
 `;
 
@@ -473,10 +494,6 @@ const ExploreMoreButton = styled.button`
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-  
-  &:hover {
-    background: gold;
-  }
 `;
 
 const PaginationContainer = styled.div`
@@ -505,13 +522,13 @@ const LoadingContainer = styled.div`
   text-align: center;
   font-size: 20px;
   color: white;
-  margin-top:250px;
+  margin-top: 250px;
 `;
 
 const ErrorContainer = styled.div`
   color: red;
   text-align: center;
-  margin-top:250px;
+  margin-top: 250px;
 `;
 
 const NoResults = styled.div`
@@ -519,3 +536,235 @@ const NoResults = styled.div`
   color: red;
   font-size: 18px;
 `;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+// import styled from "styled-components";
+
+// const Pricing = () => {
+//   const [coins, setCoins] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [searchQuery, setSearchQuery] = useState("");
+//   const [currency, setCurrency] = useState("usd");
+//   const [page, setPage] = useState(1);
+//   const [totalPages, setTotalPages] = useState(1);
+
+//   const fetchCoinsData = async () => {
+//     setLoading(true);
+//     setError(null);
+//     try {
+//       const response = await axios.get(
+//         "https://api.coingecko.com/api/v3/coins/markets",
+//         {
+//           params: {
+//             vs_currency: currency,
+//             order: "market_cap_desc",
+//             per_page: 50,
+//             page: page,
+//           },
+//         }
+//       );
+//       setCoins(response.data);
+//       setTotalPages(10); 
+//     } catch (err) {
+//       setError("Failed to fetch coin data. Please try again later.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchCoinsData();
+//   }, [currency, page]);
+
+//   const handleCurrencyChange = (e) => setCurrency(e.target.value);
+
+//   const handleSearch = (e) => setSearchQuery(e.target.value);
+
+//   const filteredCoins = coins.filter((coin) =>
+//     coin.name.toLowerCase().includes(searchQuery.toLowerCase())
+//   );
+
+//   const nextPage = () => setPage((prev) => Math.min(prev + 1, totalPages));
+
+//   const prevPage = () => setPage((prev) => Math.max(prev - 1, 1));
+
+//   if (loading) return <LoadingContainer>Loading...</LoadingContainer>;
+//   if (error) return <ErrorContainer>{error}</ErrorContainer>;
+
+  // const shouldShowPagination = searchQuery.length <= 2;
+
+//   return (
+//     <PricingContainer>
+//       <Title>Top Cryptocurrencies</Title>
+//       <SearchContainer>
+//         <SearchInput
+//           type="text"
+//           value={searchQuery}
+//           onChange={handleSearch}
+//           placeholder="Search for a coin..."
+//         />
+//         <CurrencySelect value={currency} onChange={handleCurrencyChange}>
+//           <option value="usd">USD</option>
+//           <option value="inr">INR</option>
+//           <option value="eur">EUR</option>
+//           <option value="gbp">GBP</option>
+//         </CurrencySelect>
+//       </SearchContainer>
+
+//       <CoinsContainer>
+//         {filteredCoins.map((coin) => (
+//           <CoinItem key={coin.id}>
+//             <CoinLogo src={coin.image} alt={coin.name} />
+//             <CoinDescription>
+//               <b>Rank:</b> #{coin.market_cap_rank} <br />
+//               {coin.name} ({coin.symbol.toUpperCase()})
+//             </CoinDescription>
+//             <CoinPrice>
+//               {currency.toUpperCase()} {coin.current_price.toFixed(2)}
+//             </CoinPrice>
+//             <Link to={`/coin/${coin.id}`}>
+//               <ExploreMoreButton>Explore More</ExploreMoreButton>
+//             </Link>
+//           </CoinItem>
+//         ))}
+//       </CoinsContainer>
+
+      // {shouldShowPagination && (
+      //   <PaginationContainer>
+      //     <PaginationButton onClick={prevPage} disabled={page === 1}>Previous</PaginationButton>
+      //     <PageIndicator>Page {page} of {totalPages}</PageIndicator>
+      //     <PaginationButton onClick={nextPage} disabled={page === totalPages}>Next</PaginationButton>
+      //   </PaginationContainer>
+      // )}
+
+//       {filteredCoins.length === 0 && (
+//         <NoResults>No coins found for "{searchQuery}"</NoResults>
+//       )}
+//     </PricingContainer>
+//   );
+// };
+
+// export default Pricing;
+
+// const PricingContainer = styled.div`
+//   color: white;
+//   padding: 20px;
+//   min-height: 100vh;
+// `;
+
+// const Title = styled.h1`
+//   text-align: center;
+//   color: gold;
+//   margin-top: 100px;
+// `;
+
+// const SearchContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   margin-bottom: 40px;
+//   gap: 10px;
+//   width: 100%;
+// `;
+
+// const SearchInput = styled.input`
+//   padding: 10px;
+//   border: 1px solid gray;
+//   border-radius: 5px;
+//   outline: none;
+// `;
+
+// const CurrencySelect = styled.select`
+//   padding: 10px;
+//   border: 1px solid gray;
+//   border-radius: 5px;
+// `;
+
+// const CoinsContainer = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+//   gap: 20px;
+// `;
+
+// const CoinItem = styled.div`
+//   padding: 20px;
+//   background: #1e1e1e;
+//   border-radius: 10px;
+//   text-align: center;
+//   &:hover {
+//     border: 4px solid;
+//     border-image-slice: 1;
+//     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+//     transform: scale(1.05);  
+//   }
+// `;
+
+// const CoinLogo = styled.img`
+//   width: 50px;
+// `;
+
+// const ExploreMoreButton = styled.button`
+//   background-color: gold;
+//   border: none;
+//   padding: 10px;
+//   border-radius: 5px;
+//   cursor: pointer;
+// `;
+
+// const PaginationContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   gap: 10px;
+//   margin-top: 40px;
+// `;
+
+// const PaginationButton = styled.button`
+//   padding: 10px;
+//   border: none;
+//   background: gold;
+//   cursor: pointer;
+//   &:disabled {
+//     opacity: 0.5;
+//     cursor: not-allowed;
+//   }
+// `;
+
+// const PageIndicator = styled.span`
+//   color: white;
+// `;
+
+// const LoadingContainer = styled.div`
+//   text-align: center;
+//   font-size: 20px;
+//   color: white;
+//   margin-top: 250px;
+// `;
+
+// const ErrorContainer = styled.div`
+//   color: red;
+//   text-align: center;
+//   margin-top: 250px;
+// `;
+
+// const NoResults = styled.div`
+//   text-align: center;
+//   color: red;
+//   font-size: 18px;
+// `;

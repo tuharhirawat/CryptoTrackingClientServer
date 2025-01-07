@@ -97,7 +97,6 @@ const App = () => {
   );
 };
 
-// Styled Components
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -108,6 +107,19 @@ const PageContainer = styled.div`
   background-position: center;
 
 `;
+
+
+// const PageContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+//   background-color: linear-gradient(45deg, #ff6347 25%, transparent 25%) -50px 0,
+//     linear-gradient(-45deg, #ff6347 25%, transparent 25%) -50px 0,
+//     linear-gradient(45deg, #32cd32 25%, transparent 25%) -50px 0,
+//     linear-gradient(-45deg, #32cd32 25%, transparent 25%) -50px 0;
+//   background-size: 100px 100px;
+//   background-position: center;
+// `;
 
 const HeaderWrapper = styled.header`
   position: fixed;

@@ -689,7 +689,7 @@ const FormContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100vw;
+    margin-left:-50px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -697,7 +697,7 @@ const FormContainer = styled.div`
 `;
 
 const MainForm = styled.div`
-    width: 100%;
+    // width: 100%;
     max-width: 500px;
     margin-top: 120px;
     padding: 20px;
