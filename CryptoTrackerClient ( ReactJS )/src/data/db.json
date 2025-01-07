@@ -75,12 +75,22 @@
       "currentUser": "bob.marley@example.com"
     },
     {
-      "id": "908c",
-      "airdropName": "sdgdfgdf",
-      "airdropLink": "https://www.google.com.in",
+      "id": "aede",
+      "airdropName": "hsvdcfjvdshcsd",
+      "airdropLink": "https://app.blockmesh.xyz/register",
       "referCode": "",
-      "airdropType": "Token",
-      "connectedVia": "klnfclkdsnfkldskls",
+      "airdropType": "NFT",
+      "connectedVia": "Telegram",
+      "joinDate": "2025-01-24",
+      "currentUser": "rameshchow@hotmail.com"
+    },
+    {
+      "id": "eaa2",
+      "airdropName": "dbcbsj",
+      "airdropLink": "https://app.blockmesh.xyz/register.in",
+      "referCode": "",
+      "airdropType": "Other",
+      "connectedVia": "bvgggg",
       "joinDate": "",
       "currentUser": "rameshchow@hotmail.com"
     }

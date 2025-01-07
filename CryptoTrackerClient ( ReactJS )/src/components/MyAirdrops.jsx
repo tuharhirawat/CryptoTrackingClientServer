@@ -852,7 +852,7 @@ const MyAirdrops = ({ currentUser }) => {
     const [message, setMessage] = useState('');
     const [airdropList, setAirdropList] = useState([]);
     const [errors, setErrors] = useState({});
-    const [sortCriteria, setSortCriteria] = useState('');
+    // const [sortCriteria, setSortCriteria] = useState('');
 
     useEffect(() => {
         fetchAirdrops();
@@ -925,10 +925,10 @@ const MyAirdrops = ({ currentUser }) => {
         }
     };
 
-    const handleEdit = async (airdropId) => {
-        const airdropToEdit = airdropList.find(a => a.id === airdropId);
-        setFormData({ ...airdropToEdit });
-    };
+    // const handleEdit = async (airdropId) => {
+    //     const airdropToEdit = airdropList.find(a => a.id === airdropId);
+    //     setFormData({ ...airdropToEdit });
+    // };
 
     const handleDelete = async (airdropId) => {
         try {
@@ -975,20 +975,20 @@ const MyAirdrops = ({ currentUser }) => {
 
                 <HeadingAndSelect>
                     <Heading>My Airdrops</Heading>
-                    <SortMenu onChange={(e) => handleSort(e.target.value)}>
+                    {/* <SortMenu onChange={(e) => handleSort(e.target.value)}>
                         <option value="">Sort Airdrops</option>
                         <option value="A-Z">Name (A-Z)</option>
                         <option value="Z-A">Name (Z-A)</option>
                         <option value="Newest">Newest First</option>
                         <option value="Oldest">Oldest First</option>
-                    </SortMenu>
+                    </SortMenu> */}
                 </HeadingAndSelect>
 
                 {airdropList.filter(a => a.currentUser === currentUser.email).map((airdrop) => (
                     <Card key={airdrop.id}>
                         <p><strong>Name:</strong> {airdrop.airdropName}</p>
                         <p><strong>Link:</strong> {airdrop.airdropLink}</p>
-                        <EditDeleteButton action="edit" onClick={() => handleEdit(airdrop.id)}>Edit</EditDeleteButton>
+                        {/* <EditDeleteButton action="edit" onClick={() => handleEdit(airdrop.id)}>Edit</EditDeleteButton> */}
                         <EditDeleteButton action="delete" onClick={() => handleDelete(airdrop.id)}>Delete</EditDeleteButton>
                     </Card>
                 ))}
