@@ -1,166 +1,3 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
-import axios from "axios";
-
-const Home = () => {
-  const [coins, setCoins] = useState([]); 
-  const [loading, setLoading] = useState(true); 
-  const [currency, setCurrency] = useState("usd"); 
-  const [currentPage, setCurrentPage] = useState(1);
-  const coinsPerPage = 10; 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchCoins = async () => {
-      setLoading(true); 
-      try {
-        const response = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets",
-          {
-            params: {
-              vs_currency: currency, 
-              order: "market_cap_desc",
-              per_page: 30, 
-              page: 1,
-            },
-          }
-        );
-        setCoins(response.data); 
-      } catch (error) {
-        console.error("Error fetching coins:", error);
-      } finally {
-        setLoading(false); 
-      }
-    };
-
-    fetchCoins();
-  }, [currency]); 
-
-  const handleCoinClick = (coinId) => {
-    navigate(`/coin/${coinId}`);
-  };
-
-  const handleCurrencyChange = (event) => {
-    setCurrency(event.target.value);
-  };
-
-  const indexOfLastCoin = currentPage * coinsPerPage;
-  const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
-  const currentCoins = coins.slice(indexOfFirstCoin, indexOfLastCoin);
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const getCurrencySymbol = (currency) => {
-    switch (currency) {
-      case "usd":
-        return "$";
-      case "inr":
-        return "₹";
-      case "eur":
-        return "€";
-      default:
-        return "$";
-    }
-  };
-
-  return (
-    <HomeContainer>
-      <HeaderContent>
-        <Title>Welcome to Crypto Tracker</Title>
-      </HeaderContent>
-
-      {/* Coins Section */}
-      <CoinsContainer>
-        {loading ? (
-          <LoadingMessage>Loading coins...</LoadingMessage> // Show loading message while fetching
-        ) : (
-          <CoinsWrapper>
-            {coins.map((coin) => (
-              <CoinImageWrapper
-                key={coin.id}
-                onClick={() => handleCoinClick(coin.id)}
-              >
-                <CoinImage src={coin.image || "https://via.placeholder.com/80"} />
-                <CoinInfo>
-                  <CoinName>{coin.name}</CoinName>
-                  <CoinPrice>
-                    {getCurrencySymbol(currency)}{coin.current_price.toFixed(2)}
-                  </CoinPrice>
-                </CoinInfo>
-              </CoinImageWrapper>
-            ))}
-          </CoinsWrapper>
-        )}
-      </CoinsContainer>
-
-      {/* Currency Selector */}
-      <CurrencySelector>
-        <label htmlFor="currency">Select Currency: </label>
-        <select id="currency" value={currency} onChange={handleCurrencyChange}>
-          <option value="usd">USD</option>
-          <option value="eur">EUR</option>
-          <option value="inr">INR</option>
-        </select>
-      </CurrencySelector>
-
-      {/* Trending Coins Table */}
-      <TrendingCoinsTable>
-        <thead>
-          <tr>
-            <th>Coin</th>
-            <th>Price Change (24h)</th>
-            <th>Market Cap</th>
-            {/* <th>Action</th> */}
-          </tr>
-        </thead>
-        <tbody>
-          {currentCoins.map((coin) => (
-            <tr key={coin.id}>
-              <td style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <img src={coin.image} alt={coin.name} width="30" height="30" />
-                {coin.name}
-              </td>
-              <td
-                style={{
-                  color: coin.price_change_percentage_24h > 0 ? "green" : "red",
-                }}
-              >
-                {coin.price_change_percentage_24h.toFixed(2)}%
-              </td>
-              <td>
-                {getCurrencySymbol(currency)}{coin.market_cap.toLocaleString()}
-              </td>
-              {/* <td>
-                <button onClick={() => handleCoinClick(coin.id)}>View Details</button>
-              </td> */}
-            </tr>
-          ))}
-        </tbody>
-      </TrendingCoinsTable>
-
-      {/* Pagination Controls */}
-      <Pagination>
-        {[1,2,3].map((page) => (
-          <PageButton
-            key={page}
-            onClick={() => handlePageChange(page)}
-            active={page === currentPage}
-          >
-            {page}
-          </PageButton>
-        ))}
-      </Pagination>
-
-      <Footer />
-      <GlobalStyle />
-    </HomeContainer>
-  );
-};
-
-export default Home;
 
 const Pagination = styled.div`
   display: flex;
@@ -291,9 +128,6 @@ const TrendingCoinsTable = styled.table`
     font-weight: bold;
   }
 
-  td {
-    // background-color: rgba(68, 68, 68, 0.8);
-  }
 
   button {
     padding: 6px 12px;
@@ -335,5 +169,173 @@ const Footer = styled.footer`
   color: white;
   position: relative;
   bottom: 0;
-  z-index: 5;
+  z-index: 15;
 `;
+
+
+
+
+
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import styled, { createGlobalStyle } from "styled-components";
+import axios from "axios";
+import CryptoTrackerInfo from "./CryptoTrackerInfo";
+
+const Home = () => {
+  const [coins, setCoins] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [currency, setCurrency] = useState("usd"); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const coinsPerPage = 10; 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCoins = async () => {
+      setLoading(true); 
+      try {
+        const response = await axios.get(
+          "https://api.coingecko.com/api/v3/coins/markets",
+          {
+            params: {
+              vs_currency: currency, 
+              order: "market_cap_desc",
+              per_page: 500, 
+              page: 1,
+            },
+          }
+        );
+        setCoins(response.data); 
+      } catch (error) {
+        console.error("Error fetching coins:", error);
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchCoins();
+  }, [currency]); 
+
+  const handleCoinClick = (coinId) => {
+    navigate(`/coin/${coinId}`);
+  };
+
+  const handleCurrencyChange = (event) => {
+    setCurrency(event.target.value);
+  };
+
+  const indexOfLastCoin = currentPage * coinsPerPage;
+  const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
+  const currentCoins = coins.slice(indexOfFirstCoin, indexOfLastCoin);
+  const floatingCoins = coins.slice(0, 500);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const getCurrencySymbol = (currency) => {
+    switch (currency) {
+      case "usd":
+        return "$";
+      case "inr":
+        return "₹";
+      case "eur":
+        return "€";
+      default:
+        return "$";
+    }
+  };
+
+  return (
+    <HomeContainer>
+      <HeaderContent>
+        <Title>Welcome to Crypto Tracker</Title>
+      </HeaderContent>
+
+      {/* Coins Section */}
+      <CoinsContainer>
+        {loading ? (
+          <LoadingMessage>Loading coins...</LoadingMessage>
+        ) : (
+          <CoinsWrapper>
+            {floatingCoins.map((coin) => (
+              <CoinImageWrapper
+                key={coin.id}
+                onClick={() => handleCoinClick(coin.id)}
+              >
+                <CoinImage src={coin.image || "https://via.placeholder.com/80"} />
+                <CoinInfo>
+                  <CoinName>{coin.name}</CoinName>
+                  <CoinPrice>
+                    {getCurrencySymbol(currency)}{coin.current_price.toFixed(2)}
+                  </CoinPrice>
+                </CoinInfo>
+              </CoinImageWrapper>
+            ))}
+          </CoinsWrapper>
+        )}
+      </CoinsContainer>
+
+      {/* Currency Selector */}
+      <CurrencySelector>
+        <label htmlFor="currency">Select Currency: </label>
+        <select id="currency" value={currency} onChange={handleCurrencyChange}>
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="inr">INR</option>
+        </select>
+      </CurrencySelector>
+
+      {/* Trending Coins Table */}
+      <TrendingCoinsTable>
+        <thead>
+          <tr>
+            <th>Coin</th>
+            <th>Price Change (24h)</th>
+            <th>Market Cap</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentCoins.map((coin) => (
+            <tr key={coin.id}>
+              <td style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <img src={coin.image} alt={coin.name} width="30" height="30" />
+                {coin.name}
+              </td>
+              <td
+                style={{
+                  color: coin.price_change_percentage_24h > 0 ? "green" : "red",
+                }}
+              >
+                {coin.price_change_percentage_24h.toFixed(2)}%
+              </td>
+              <td>
+                {getCurrencySymbol(currency)}{coin.market_cap.toLocaleString()}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </TrendingCoinsTable>
+
+      {/* Pagination Controls */}
+      <Pagination>
+        {[1,2,3,4,5].map((page) => (
+          <PageButton
+            key={page}
+            onClick={() => handlePageChange(page)}
+            active={page === currentPage}
+          >
+            {page}
+          </PageButton>
+        ))}
+      </Pagination>
+
+      <CryptoTrackerInfo />
+
+      <Footer />
+      <GlobalStyle />
+    </HomeContainer>
+  );
+};
+
+export default Home;

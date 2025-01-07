@@ -1285,10 +1285,10 @@ const Background = styled.div`
 
 const ProfileContainer = styled.div`
   position: relative;
-  background: linear-gradient(65deg, black , gold );
-  background-size: 400% 400%;u
+  background: linear-gradient(45deg , gold, teal, pink );
+  background-size: 400% 400%;
   animation: gradientAnimation 10s ease infinite;
-  padding: 20px;
+  padding: 15px;
   width:70%;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -1304,6 +1304,8 @@ const ProfileDetails = styled.div`
   p {
     font-size: 1rem;
     margin: 10px 0;
+    justify-content:centre;
+    align-items:centre;
   }
 `;
 
