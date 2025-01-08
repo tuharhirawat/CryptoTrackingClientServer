@@ -72,7 +72,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CryptoTrackingSystemFinal1.Models;
-using BCrypt.Net;
+// using BCrypt.Net;
 
 namespace CryptoTrackingSystemFinal1.Controllers
 {
@@ -115,10 +115,10 @@ namespace CryptoTrackingSystemFinal1.Controllers
         {
             if (id != user.Id) return BadRequest();
 
-            if (!string.IsNullOrEmpty(user.Password))
-            {
-                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            }
+            // if (!string.IsNullOrEmpty(user.Password))
+            // {
+            //     user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            // }
 
             var updatedUser = await _userRepository.UpdateUserAsync(user);
             return Ok(updatedUser);
