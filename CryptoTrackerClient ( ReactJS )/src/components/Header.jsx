@@ -464,7 +464,7 @@ const Header = ({ isLoggedIn, handleLogout }) => {
           <>
             <NavLink onClick={() => handleNavigation("/myairdrops")}>My-Airdrops</NavLink>
             <NavLink onClick={() => handleNavigation("/airdrop")}>Airdrop</NavLink>
-            <NavLink onClick={() => handleNavigation("/watchlist")}>WishList</NavLink>
+            <NavLink onClick={() => handleNavigation("/wishlist")}>WishList</NavLink>
             <NavLink onClick={() => handleNavigation("/profile")}>Profile</NavLink>
             <NavLink onClick={() => handleNavigation("/pricing")}>Pricing</NavLink>
             <Button onClick={handleLogout}>Logout</Button>
@@ -487,6 +487,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   color: #fff;
   display: flex;
+  background:#333;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;

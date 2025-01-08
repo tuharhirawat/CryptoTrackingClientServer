@@ -160,7 +160,7 @@ function Footer() {
 
       {/* Footer Bottom */}
       <FootBtm>
-        <p>&copy; 2024 Crypto Tracker. All Rights Reserved.</p>
+        {/* <p>&copy; 2024 Crypto Tracker. All Rights Reserved.</p> */}
       </FootBtm>
     </Main>
   );

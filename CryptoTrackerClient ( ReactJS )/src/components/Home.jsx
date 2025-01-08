@@ -180,7 +180,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
-import CryptoTrackerInfo from "./CryptoTrackerInfo";
+// import CryptoTrackerInfo from "./CryptoTrackerInfo";
 
 const Home = () => {
   const [coins, setCoins] = useState([]); 
@@ -330,7 +330,7 @@ const Home = () => {
         ))}
       </Pagination>
 
-      <CryptoTrackerInfo />
+      {/* <CryptoTrackerInfo /> */}
 
       <Footer />
       <GlobalStyle />

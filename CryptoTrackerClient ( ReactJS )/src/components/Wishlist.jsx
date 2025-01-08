@@ -462,7 +462,7 @@ const Wishlist = () => {
 
   return (
     <PageContainer>
-      <h2>Your Watchlist</h2>
+      <h2>Your Wishlist</h2>
       {watchlist.length > 0 ? (
         <WatchlistContainer>
           {watchlist.map((item) => (
@@ -478,7 +478,7 @@ const Wishlist = () => {
           ))}
         </WatchlistContainer>
       ) : (
-        <NoResults>Your watchlist is empty</NoResults>
+        <NoResults>Your wishlist is empty</NoResults>
       )}
     </PageContainer>
   );

@@ -16,7 +16,7 @@ const Title = styled.h1`
   text-align: center;
   font-size: 2rem;
   margin-bottom: 20px;
-  color: gold;
+  color: white;
 `;
 
 const Section = styled.section`
@@ -24,7 +24,7 @@ const Section = styled.section`
 `;
 
 const Subtitle = styled.h2`
-  color: gold;
+  color: white;
   font-size: 2rem;
   border-bottom: 3px solid gold;
   padding-bottom: 10px;
@@ -50,11 +50,7 @@ const ListItem = styled.li`
 const CryptoTrackerInfo = () => {
   return (
     <Container>
-      <Title>
-        <h1>Welcome to Crypto Tracker</h1> 
-        <p>Your Guide To Free Airdrops & Crypto Earning Oppurtunities</p>
-        </Title>
-      
+            
       <Section>
         <Subtitle>What Are Crypto Airdrops?</Subtitle>
         <Paragraph>A crypto airdrop is a distribution of free cryptocurrency tokens by a blockchain project to promote its platform, build community engagement, and reward loyal users.</Paragraph>

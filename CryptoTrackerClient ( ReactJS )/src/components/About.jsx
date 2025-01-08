@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CryptoTrackerInfo from './CryptoTrackerInfo';
 
 const About = () => {
   return (
@@ -25,6 +26,9 @@ const About = () => {
           We are committed to empowering our users with the knowledge and tools they need to navigate the ever-changing 
           cryptocurrency landscape.
         </Paragraph>
+
+        <CryptoTrackerInfo />
+
         <Subtitle>Our Key Features</Subtitle>
         <FeaturesList>
           <li>Real-time cryptocurrency price tracking and market data.</li>
@@ -37,7 +41,9 @@ const About = () => {
         <Paragraph>
           Join Crypto Tracker today and stay informed, confident, and prepared in your cryptocurrency journey.
         </Paragraph>
+
       </AboutContainer>
+
     </PageWrapper>
   );
 };
@@ -47,6 +53,7 @@ export default About;
 const PageWrapper = styled.div`
   min-height: 100vh;
   display: flex;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
   margin-top: 60px

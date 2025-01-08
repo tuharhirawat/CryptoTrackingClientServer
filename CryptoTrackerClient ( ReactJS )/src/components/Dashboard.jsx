@@ -1273,16 +1273,6 @@ const Background = styled.div`
   color: #fff;
 `;
 
-// const ProfileContainer = styled.div`
-//   width: 90%;
-//   max-width: 600px;
-//   padding: 20px;
-//   background-color: #444;
-//   border-radius: 10px;
-//   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-//   text-align: center;
-// `;
-
 const ProfileContainer = styled.div`
   position: relative;
   background: linear-gradient(45deg , gold, teal, pink );

@@ -65,16 +65,28 @@ const App = () => {
 
         <MainContent>
           <Routes>
-            <Route path="/signup" element={<Signup />} />
+            {/* <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
             <Route 
               path="/dashboard" 
               element={
               isLoggedIn ? (<Dashboard setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} handleLogout={handleLogout} />) 
               : (<Navigate to="/login" />)} 
-            />
+            /> */}
+            <Route 
+  path="/login" 
+  element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} 
+/>
+<Route 
+  path="/signup" 
+  element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Signup />} 
+/>
+<Route 
+  path="/dashboard" 
+  element={isLoggedIn ? <Dashboard setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" replace />} 
+/>
 
-            <Route path="/watchlist" element={isLoggedIn ? <WishList currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
+            <Route path="/wishlist" element={isLoggedIn ? <WishList currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
             <Route path="/airdrop" element={isLoggedIn ? <Airdrop currentUser={currentUser} /> : <Navigate to="/login" />} />
             <Route path="/myairdrops" element={isLoggedIn ? <MyAirdrops currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
             <Route path="/pricing" element={isLoggedIn ? <Pricing currentUser={currentUser} handleLogout={handleLogout} /> : <Navigate to="/login" />} />
@@ -108,18 +120,6 @@ const PageContainer = styled.div`
 
 `;
 
-
-// const PageContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh;
-//   background-color: linear-gradient(45deg, #ff6347 25%, transparent 25%) -50px 0,
-//     linear-gradient(-45deg, #ff6347 25%, transparent 25%) -50px 0,
-//     linear-gradient(45deg, #32cd32 25%, transparent 25%) -50px 0,
-//     linear-gradient(-45deg, #32cd32 25%, transparent 25%) -50px 0;
-//   background-size: 100px 100px;
-//   background-position: center;
-// `;
 
 const HeaderWrapper = styled.header`
   position: fixed;

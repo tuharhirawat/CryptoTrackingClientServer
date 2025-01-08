@@ -1874,7 +1874,7 @@ const Airdrop = () => {
         const response = await axios.get("http://localhost:5232/api/WishlistAirdrop");
         setWatchlist(response.data || []);
       } catch (error) {
-        console.error("Error fetching watchlist:", error);
+        console.error("Error fetching wishlist:", error);
       }
     };
 
@@ -1897,8 +1897,8 @@ const Airdrop = () => {
     );
 
     if (alreadyInWatchlist) {
-      alert("Airdrop already exists in your watchlist!");
-      navigate("/watchlist");
+      alert("Airdrop already exists in your wishlist!");
+      navigate("/wishlist");
       return;
     }
 
@@ -1921,8 +1921,8 @@ const Airdrop = () => {
         },
       ]);
 
-      alert("Airdrop added to your watchlist!");
-      navigate("/watchlist");
+      alert("Airdrop added to your wishlist!");
+      navigate("/wishlist");
     } catch (error) {
       console.error("Error adding airdrop to wishlist:", error);
     }
