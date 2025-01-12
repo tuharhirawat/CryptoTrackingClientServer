@@ -11,6 +11,7 @@ namespace CryptoTrackingSystemFinal1.Models
         public string AirdropWebsite { get; set; } = null!;
         public string SocialMediaRequirement { get; set; } = null!;
         public string ReferralProgram { get; set; } = null!;
+        public string? FundRaised { get; set; }
         public string AirdropStatus { get; set; } = null!;
         public string? Description { get; set; }
     }

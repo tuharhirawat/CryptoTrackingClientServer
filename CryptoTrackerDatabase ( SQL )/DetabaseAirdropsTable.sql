@@ -3,13 +3,14 @@ use CryptoTrackingClientServer
 drop table Airdrop
 
 CREATE TABLE Airdrop (
-    id INT IDENTITY(1,1) PRIMARY KEY,                     -- Unique identifier for each airdrop
+    AirdropId INT IDENTITY(1,1) PRIMARY KEY,                     -- Unique identifier for each airdrop
     AirdropName NVARCHAR(255) NOT NULL UNIQUE,     -- Name of the airdrop
     TokenSymbol NVARCHAR(50) NOT NULL,      -- Token symbol (e.g., "NaN")
     AirdropWebsite NVARCHAR(MAX) NOT NULL ,  -- Website link of the airdrop
     SocialMediaRequirement NVARCHAR(10) NOT NULL, -- Indicates if social media tasks are required
     ReferralProgram NVARCHAR(10) NOT NULL,   -- Indicates if referral program is available
-    AirdropStatus NVARCHAR(15) NOT NULL,    -- Current status of the airdrop (e.g., "Active")
+    FundRaised NVARCHAR(50),
+	AirdropStatus NVARCHAR(15) NOT NULL,    -- Current status of the airdrop (e.g., "Active")
     Description NVARCHAR(MAX)               -- Detailed description of the airdrop
 );
 
@@ -73,7 +74,7 @@ CREATE PROCEDURE GetDefaultAirdropByID
 AS
 BEGIN
     SELECT * FROM Airdrop
-    WHERE id = @AirdropID;
+    WHERE AirdropId = @AirdropID;
 END;
 
 
@@ -97,7 +98,7 @@ BEGIN
         ReferralProgram = @ReferralProgram,
         AirdropStatus = @AirdropStatus,
         Description = @Description
-    WHERE id = @AirdropID;
+    WHERE AirdropId = @AirdropID;
 END;
 
 
@@ -108,7 +109,7 @@ CREATE PROCEDURE DeleteDefaultAirdrop
 AS
 BEGIN
     DELETE FROM Airdrop
-    WHERE id = @AirdropID;
+    WHERE AirdropId = @AirdropID;
 END;
 
 

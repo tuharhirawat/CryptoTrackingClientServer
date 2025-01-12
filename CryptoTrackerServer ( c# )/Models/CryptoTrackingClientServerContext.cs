@@ -25,7 +25,7 @@ namespace CryptoTrackingSystemFinal1.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-80G0CUM;Database=CryptoTrackingClientServer;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-GA5SAER;Database=CryptoTrackingClientServer;Trusted_Connection=True;");
             }
         }
 
@@ -35,14 +35,14 @@ namespace CryptoTrackingSystemFinal1.Models
             {
                 entity.ToTable("Airdrop");
 
-                entity.HasIndex(e => e.AirdropName, "UQ__Airdrop__F6D35E0B39FFDF48")
+                entity.HasIndex(e => e.AirdropName, "UQ__Airdrop__F6D35E0B8DF4982F")
                     .IsUnique();
-
-                entity.Property(e => e.AirdropId).HasColumnName("id");
 
                 entity.Property(e => e.AirdropName).HasMaxLength(255);
 
                 entity.Property(e => e.AirdropStatus).HasMaxLength(15);
+
+                entity.Property(e => e.FundRaised).HasMaxLength(50);
 
                 entity.Property(e => e.ReferralProgram).HasMaxLength(10);
 
@@ -55,10 +55,10 @@ namespace CryptoTrackingSystemFinal1.Models
             {
                 entity.ToTable("users");
 
-                entity.HasIndex(e => e.MobileNumber, "UQ__users__30462B0FC7B8F467")
+                entity.HasIndex(e => e.MobileNumber, "UQ__users__30462B0F9BC56DAB")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Email, "UQ__users__AB6E6164C1DC186D")
+                entity.HasIndex(e => e.Email, "UQ__users__AB6E616423B83EB9")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -83,7 +83,7 @@ namespace CryptoTrackingSystemFinal1.Models
             modelBuilder.Entity<WishlistAirdrop>(entity =>
             {
                 entity.HasKey(e => e.WishlistId)
-                    .HasName("PK__Wishlist__233189CB7E6234C7");
+                    .HasName("PK__Wishlist__233189CB5C92969D");
 
                 entity.Property(e => e.WishlistId).HasColumnName("WishlistID");
 
