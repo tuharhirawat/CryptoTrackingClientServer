@@ -443,7 +443,7 @@ const Header = ({ isLoggedIn, handleLogout }) => {
 
   return (
     <HeaderContainer>
-      <Logo onClick={() => handleNavigation(isLoggedIn ? "/dashboard" : "/signup")}>
+      <Logo onClick={() => handleNavigation(isLoggedIn ? "/airdrop" : "/signup")}>
         Crypto Tracker
       </Logo>
       <HamburgerIcon onClick={toggleMenu}>

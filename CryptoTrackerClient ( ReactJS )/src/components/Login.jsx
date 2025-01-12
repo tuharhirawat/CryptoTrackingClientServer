@@ -457,7 +457,7 @@ const Login = ({ setIsLoggedIn, setCurrentUser }) => {
         setCurrentUser(user);
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("currentUser", JSON.stringify(user));
-        navigate("/dashboard");
+        navigate("/airdrop");
       } else {
         setError("Invalid email or password.");
       }

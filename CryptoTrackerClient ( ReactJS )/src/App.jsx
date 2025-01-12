@@ -75,11 +75,11 @@ const App = () => {
             /> */}
             <Route 
   path="/login" 
-  element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} 
+  element={isLoggedIn ? <Navigate to="/airdrop" replace /> : <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} 
 />
 <Route 
   path="/signup" 
-  element={isLoggedIn ? <Navigate to="/dashboard" replace /> : <Signup />} 
+  element={isLoggedIn ? <Navigate to="/airdrop" replace /> : <Signup />} 
 />
 <Route 
   path="/dashboard" 
