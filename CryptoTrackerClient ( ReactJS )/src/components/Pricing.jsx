@@ -319,7 +319,7 @@ const Pricing = () => {
   const [currency, setCurrency] = useState("usd"); // Currency selector state
   const [page, setPage] = useState(1); // Current page
   const [totalPages, setTotalPages] = useState(1); // Total pages based on coins count
-  const [coinsPerPage] = useState(20); // Number of coins to display per page
+  const [coinsPerPage] = useState(500); // Number of coins to display per page
 
   const fetchCoinsData = async () => {
     setLoading(true);
@@ -331,7 +331,7 @@ const Pricing = () => {
           params: {
             vs_currency: currency,
             order: "market_cap_desc",
-            per_page: 200, 
+            per_page: 2000, 
             page: 1, 
           },
         }

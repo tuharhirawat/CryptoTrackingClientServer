@@ -200,7 +200,7 @@ const Home = () => {
             params: {
               vs_currency: currency, 
               order: "market_cap_desc",
-              per_page: 500, 
+              per_page: 5000, 
               page: 1,
             },
           }
